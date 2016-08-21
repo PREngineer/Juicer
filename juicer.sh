@@ -87,6 +87,10 @@ case $option in
         sudo ./change-network-settings.sh
         ;;
 
+    99)
+        exit 0
+        ;;
+
     *)
        	echo -e $RED'Invalid Option'$BLACK
 		ScriptLoc=$(readlink -f "$0")
