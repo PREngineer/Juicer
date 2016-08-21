@@ -490,7 +490,7 @@ function change_dns()
 	
 	echo -e $BLACK"Enter the desired DNS Server : "$CYAN
 	read dns
-	echo "nameserver $dns" > \\etc\\resolv.conf
+	echo "nameserver $dns" > resolv.conf
 
 	$another = 'y'
 	while [$another -eq 'y' || $another -eq 'Y']
@@ -503,7 +503,7 @@ function change_dns()
 			'y' | 'Y')
 		        echo -e $BLACK"Enter the desired DNS Server : "$CYAN
 				read plus
-				echo "nameserver $plus" >> \etc\resolv.conf
+				echo "nameserver $plus" >> resolv.conf
 		        ;;
 
 		    'n' | 'N')
@@ -515,7 +515,7 @@ function change_dns()
 		esac
 	done
 
-
+	sudo mv resolv.conf /etc/
 }
 ########################### START EXECUTION ###########################
 
