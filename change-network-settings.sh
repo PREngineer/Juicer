@@ -408,7 +408,7 @@ function write_wifi_clear()
 	iface eth0 inet dhcp
 
 	auto $wlan
-	iface $wlan inet $mode" > text
+	iface $wlan inet $mode" > $text
 
 	if [ "$mode" -eq "static" ]
 	then 
