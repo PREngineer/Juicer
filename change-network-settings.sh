@@ -400,26 +400,27 @@ function clear_wifi()
 ########################### Clear & Write File ###########################
 function write_wifi_clear()
 {
-	echo "# Network Configuration by Juicer for Orange Pi
-	auto lo
-	iface lo inet loopback
-
-	auto eth0
-	iface eth0 inet dhcp
-
-	auto $wlan
-	iface $wlan inet $mode" > $text
+	echo "# Network Configuration by Juicer for Orange Pi" > $text
+	echo "auto lo" >> $text
+	echo "iface lo inet loopback" >> $text
+	echo "" >> $text
+	echo "auto eth0" >> $text
+	echo "iface eth0 inet dhcp" >> $text
+	echo "" >> $text
+	echo "auto $wlan" >> $text
+	echo "iface $wlan inet $mode" >> $text
 
 	if [ "$mode" -eq "static" ]
 	then 
-		echo "address $address
-		netmask $netmask
-		gateway $gateway
-		dns-nameservers $dns
-		broadcast $broadcast
-		network $network
-		wpa-ssid $wifi
-		wpa-psk $pass" >> $text
+		echo "	address $address" >> $text
+		echo "	netmask $netmask" >> $text
+		echo "	gateway $gateway" >> $text
+		echo "	dns-nameservers $dns" >> $text
+		echo "	broadcast $broadcast" >> $text
+		echo "	network $network" >> $text
+		echo "	wpa-ssid $wifi" >> $text
+		echo "	wpa-psk $pass" >> $text
+	fi
 
 	$text > /etc/network/interfaces
 }
@@ -427,21 +428,22 @@ function write_wifi_clear()
 ########################### Add to File ###########################
 function add_wifi()
 {
-	echo "auto $wlan
-	iface $wlan inet $mode" > text
+	echo "auto $wlan" >> $text
+	echo "iface $wlan inet $mode" >> $text
 
 	if [ "$mode" -eq "static" ]
 	then 
-		echo "address $address
-		netmask $netmask
-		gateway $gateway
-		dns-nameservers $dns
-		broadcast $broadcast
-		network $network
-		wpa-ssid $wifi
-		wpa-psk $pass" >> $text
+		echo "	address $address" >> $text
+		echo "	netmask $netmask" >> $text
+		echo "	gateway $gateway" >> $text
+		echo "	dns-nameservers $dns" >> $text
+		echo "	broadcast $broadcast" >> $text
+		echo "	network $network" >> $text
+		echo "	wpa-ssid $wifi" >> $text
+		echo "	wpa-psk $pass" >> $text
+	fi
 
-	$text >> /etc/network/interfaces
+	$text > /etc/network/interfaces
 }
 
 ########################### Show WiFi Adapters ###########################
