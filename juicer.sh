@@ -55,7 +55,7 @@ echo -e '3. Proceed only if you authorize this script to make changes to your sy
 echo
 
 echo -e $YELLOW'@---@---@---@---@---@--- ADMIN ---@---@---@---@---@---@'
-echo -e $YELLOW'00. '$BLACK'Update Auto-HTPC'
+echo -e $YELLOW'00. '$BLACK'Update Juicer for Orange Pi'
 echo -e $YELLOW'@---@---@---@---@---@--- NETWORK ---@---@---@---@---@---@'
 echo -e $YELLOW'01. '$BLACK'Check Network Settings'
 echo -e $YELLOW'02. '$BLACK'Change Network Settings'
