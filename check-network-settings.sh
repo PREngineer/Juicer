@@ -14,7 +14,8 @@ GREEN='\e[92m'
 
 SCRIPTPATH=$(pwd)
 
-function pause(){
+function pause()
+{
    read -p "$*"
 }
 
@@ -40,6 +41,139 @@ function title()
 	echo
 }
 
+########################### Show Menu Options ###########################
+function options()
+{
+	echo -e $YELLOW'@---@---@---@---@---@--- CHOOSE ---@---@---@---@---@---@'
+	echo -e $YELLOW'01. '$BLACK'View - Running Details'
+	echo -e $YELLOW'02. '$BLACK'View - Configuration File Details'
+	echo -e $YELLOW'03. '$BLACK'View - Registered WiFi Adapter Details'
+	echo -e $YELLOW'04. '$BLACK'View - Primary DNS'
+	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
+	echo
+	echo -e 'Type your choice and press [ENTER]: '
+	
+	read option
+
+	case $option in
+
+		1 | 01)
+	        display_running
+	        ;;
+
+	    2 | 02)
+	        display_config
+	        ;;
+
+	  	3 | 03)
+	        display_wifi
+	        ;;
+
+	   	4 | 04)
+	        display_dns
+	        ;;
+
+	    *)
+	       	echo -e $RED'Invalid Option'$BLACK
+			options
+	esac
+}
+
+
+########################### Show Running Details ###########################
+function display_running()
+{
+	title
+
+	echo 
+	echo -e $YELLOW'--->Retrieving Running Network Details...'$BLACK
+	echo 
+
+	ifconfig
+
+	echo
+	pause 'Press [Enter] to go back to the Main Menu' $BLACK
+	options
+	echo
+}
+
+########################### Show Config File Details ###########################
+function display_config()
+{
+	title
+
+	echo 
+	echo -e $YELLOW'--->Retrieving Config File Details...'$BLACK
+	echo 
+
+	cat /etc/network/interfaces
+
+	echo
+	pause 'Press [Enter] to go back to the Main Menu' $BLACK
+	options
+	echo
+}
+
+########################### Show WiFi Adapters ###########################
+function display_wifi()
+{
+	title
+
+	echo 
+	echo -e $YELLOW'--->Retrieving WiFi Adapter Details...'$BLACK
+	echo 
+
+	cat /etc/udev/rules.d/70-persistent-net.rules | grep '{address}' > test
+
+	cat test | grep -o -P '(?<={address}==").*(?=", ATTR{dev_id})' > macs
+
+	cat test | grep -o -P '(?<=NAME=").*(?=")' > names
+
+	mapfile -t macs < macs
+
+	mapfile -t names < names
+
+	echo -e "---------------------------------"
+	echo -e "Name \t MAC"
+	echo -e "---------------------------------"
+
+	for((i=0; i < ${#names[@]}; i++));
+	do
+	        echo -e "${names[i]} \t ${macs[i]}"
+	done
+	
+	echo -e "---------------------------------"
+	rm macs names test
+
+	echo
+	pause 'Press [Enter] to go back to the Main Menu' $BLACK
+	options
+	echo
+}
+
+########################### Show Primary DNS ###########################
+function display_dns()
+{
+	title
+
+	echo -e "---------------------------------"
+	echo -e "    PRIMARY SYSTEM DNS SERVER    "
+	echo -e "---------------------------------"
+
+	cat /etc/resolv.conf | grep -o -P '(?<=nameserver ).*(?=)'
+		
+	echo -e "---------------------------------"
+
+	echo
+	pause 'Press [Enter] to go back to the Main Menu' $BLACK
+	options
+	echo
+}
+
+
+
+
+########################### Show START Information ###########################
 title
 
 echo -e $BLACK'--->Check Network Settings'
@@ -60,25 +194,9 @@ then
 	echo
 	pause 'Press [Enter] to go back to the Main Menu...'
 	cd $SCRIPTPATH
-	sudo ./setup.sh
+	sudo ./juicer.sh
 	exit 0
 fi
 
-########################### Show Network Settings ###########################
-title
-
-echo 
-echo -e $YELLOW'--->Retrieving Network Settings...'$BLACK
-echo 
-sudo ifconfig
-
-echo
-echo -e $GREEN'--->All done. '$BLACK
-
-echo
-
-pause 'Press [Enter] to go back to the Main Menu...'
-
-cd $SCRIPTPATH
-sudo ./setup.sh
-exit 0
+########################### START EXECUTION ###########################
+options

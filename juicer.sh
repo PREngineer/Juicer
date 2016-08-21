@@ -43,8 +43,6 @@ echo -e "██   ██║██║   ██║██║██║     ██╔
 echo -e "╚█████╔╝╚██████╔╝██║╚██████╗███████╗██║  ██║"
 echo -e " ╚════╝  ╚═════╝ ╚═╝ ╚═════╝╚══════╝╚═╝  ╚═╝"
                                             
-"
-
 echo -e $CYAN
 echo -e "Brought to you by PREngineer"
 echo

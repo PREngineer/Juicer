@@ -14,28 +14,33 @@ GREEN='\e[92m'
 
 SCRIPTPATH=$(pwd)
 
-function pause(){
+function pause()
+{
    read -p "$*"
 }
 
-# Make sure to clear the Terminal
-clear
+function title()
+{
+	# Make sure to clear the Terminal
+	clear
 
-# Display the Title Information
-echo 
-echo -e $RED
-echo -e "     ██╗██╗   ██╗██╗ ██████╗███████╗██████╗"
-echo -e "     ██║██║   ██║██║██╔════╝██╔════╝██╔══██╗"
-echo -e "     ██║██║   ██║██║██║     █████╗  ██████╔╝"
-echo -e "██   ██║██║   ██║██║██║     ██╔══╝  ██╔══██╗"
-echo -e "╚█████╔╝╚██████╔╝██║╚██████╗███████╗██║  ██║"
-echo -e " ╚════╝  ╚═════╝ ╚═╝ ╚═════╝╚══════╝╚═╝  ╚═╝"
+	# Display the Title Information
+	echo 
+	echo -e $RED
+	echo -e "     ██╗██╗   ██╗██╗ ██████╗███████╗██████╗"
+	echo -e "     ██║██║   ██║██║██╔════╝██╔════╝██╔══██╗"
+	echo -e "     ██║██║   ██║██║██║     █████╗  ██████╔╝"
+	echo -e "██   ██║██║   ██║██║██║     ██╔══╝  ██╔══██╗"
+	echo -e "╚█████╔╝╚██████╔╝██║╚██████╗███████╗██║  ██║"
+	echo -e " ╚════╝  ╚═════╝ ╚═╝ ╚═════╝╚══════╝╚═╝  ╚═╝"
 
-echo -e $CYAN
-echo -e "Brought to you by PREngineer"
-echo
-echo -e $GREEN'Change Network Settings'
-echo 
+	echo -e $CYAN
+	echo -e "Brought to you by PREngineer"
+	echo
+	echo -e $GREEN'Change Network Settings'
+	echo 
+}
+
 echo -e $BLACK'--->Change Network Settings'
 echo 
 echo -e $RED'1. This script has been tested on Ubuntu (Server & Desktop).'
@@ -46,6 +51,8 @@ echo
 read -p 'Type y/Y and press [ENTER] to AGREE and continue with the installation or press any other key to exit: '
 RESP=${REPLY,,}
 
+########################### Exit to Main Menu ###########################
+
 if [ "$RESP" != "y" ] 
 then
 	echo -e $RED"That's cool. We're here to help if you decide otherwise."$BLACK
@@ -55,6 +62,8 @@ then
 	sudo ./setup.sh
 	exit 0
 fi
+
+########################### Prompt for the Interface to edit ###########################
 
 echo -e $YELLOW'--->Getting ready to change Network Settings...'$BLACK
 sudo nano /etc/network/interfaces
