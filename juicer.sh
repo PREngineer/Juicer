@@ -69,7 +69,8 @@ case $option in
 
 	0 | 00)
 		echo
-	        	echo -e $YELLOW'--->Checking for updates...'$BLACK
+	    echo -e $YELLOW'--->Checking for updates...'$BLACK
+		git reset --hard
 		git pull
 		echo
 		pause 'Press [Enter] to restart and continue...'
