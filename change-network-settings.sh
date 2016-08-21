@@ -490,10 +490,10 @@ function change_dns()
 	
 	echo -e $BLACK"Enter the desired DNS Server : "$CYAN
 	read dns
-	echo "nameserver $dns" > \etc\resolv.conf
+	echo "nameserver $dns" > \\etc\\resolv.conf
 
 	$another = 'y'
-	while [another -eq 'y' || another -eq 'Y']
+	while [$another -eq 'y' || $another -eq 'Y']
 	do
 		echo -e $BLACK"Add another DNS? [y/n] : "
 		read another
