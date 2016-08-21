@@ -48,7 +48,7 @@ echo -e '2. The author(s) cannot be held accountable for any problems that might
 echo -e '3. Proceed only if you authorize this script to make changes to your system.'$BLACK
 echo
 
-read -p 'Type y/Y and press [ENTER] to AGREE and continue with the installation or press any other key to exit: '
+read -p 'Type y/Y and press [ENTER] to AGREE and continue or press any other key to exit: '
 RESP=${REPLY,,}
 
 ########################### Exit to Main Menu ###########################

@@ -44,11 +44,15 @@ function title()
 ########################### Show Menu Options ###########################
 function options()
 {
+	title
+
 	echo -e $YELLOW'@---@---@---@---@---@--- CHOOSE ---@---@---@---@---@---@'
 	echo -e $YELLOW'01. '$BLACK'View - Running Details'
 	echo -e $YELLOW'02. '$BLACK'View - Configuration File Details'
 	echo -e $YELLOW'03. '$BLACK'View - Registered WiFi Adapter Details'
 	echo -e $YELLOW'04. '$BLACK'View - Primary DNS'
+	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
+	echo -e $YELLOW'04. '$BLACK'View - Go back to Main Menu'
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
 	echo
 	echo -e 'Type your choice and press [ENTER]: '
@@ -92,7 +96,7 @@ function display_running()
 	ifconfig
 
 	echo
-	pause 'Press [Enter] to go back to the Main Menu' $BLACK
+	pause 'Press [Enter] to go back to the Check Network Menu'
 	options
 	echo
 }
@@ -109,7 +113,7 @@ function display_config()
 	cat /etc/network/interfaces
 
 	echo
-	pause 'Press [Enter] to go back to the Main Menu' $BLACK
+	pause 'Press [Enter] to go back to the Check Network Menu'
 	options
 	echo
 }
@@ -146,7 +150,7 @@ function display_wifi()
 	rm macs names test
 
 	echo
-	pause 'Press [Enter] to go back to the Main Menu' $BLACK
+	pause 'Press [Enter] to go back to the Check Network Menu'
 	options
 	echo
 }
@@ -165,7 +169,7 @@ function display_dns()
 	echo -e "---------------------------------"
 
 	echo
-	pause 'Press [Enter] to go back to the Main Menu' $BLACK
+	pause 'Press [Enter] to go back to the Check Network Menu'
 	options
 	echo
 }
@@ -183,7 +187,7 @@ echo -e '2. The author(s) cannot be held accountable for any problems that might
 echo -e '3. Proceed only if you authorize this script to make changes to your system.'$BLACK
 echo
 
-read -p 'Type y/Y and press [ENTER] to AGREE and continue with the installation or press any other key to exit: '
+read -p 'Type y/Y and press [ENTER] to AGREE and continue or press any other key to exit: '
 RESP=${REPLY,,}
 
 ########################### Exit to Main Menu ###########################
