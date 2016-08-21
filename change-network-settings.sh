@@ -47,8 +47,6 @@ function agree()
 {
 	########################### Show AGREEMENT Information ###########################
 
-	echo -e $BLACK'--->Check Network Settings'
-	echo 
 	echo -e $RED'1. This script has been tested on Ubuntu (Server & Desktop).'
 	echo -e '2. The author(s) cannot be held accountable for any problems that might occur if you run this script.'
 	echo -e '3. Proceed only if you authorize this script to make changes to your system.'
