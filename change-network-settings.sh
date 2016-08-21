@@ -492,7 +492,7 @@ function change_dns()
 	read dns
 	echo "nameserver $dns" > \etc\resolv.conf
 
-	another = 'y'
+	$another = 'y'
 	while [another -eq 'y' || another -eq 'Y']
 	do
 		echo -e $BLACK"Add another DNS? [y/n] : "
