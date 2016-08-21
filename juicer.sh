@@ -25,7 +25,7 @@ function pause()
 if [ "$EUID" -ne 0 ]
   then 
   echo
-  echo -e $RED'Please run as root using the command: '$BLACK'sudo ./setup.sh'
+  echo -e $RED'Please run as root using the command: '$BLACK'sudo ./juicer.sh'
   echo
   exit 0
 fi
@@ -74,7 +74,7 @@ case $option in
 		echo
 		pause 'Press [Enter] to restart and continue...'
 		cd $SCRIPTPATH
-		sudo ./setup.sh
+		sudo ./juicer.sh
 		exit 0
 		;;
 

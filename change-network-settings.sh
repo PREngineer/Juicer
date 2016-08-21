@@ -59,7 +59,7 @@ then
 	echo
 	pause 'Press [Enter] to continue...'
 	cd $SCRIPTPATH
-	sudo ./setup.sh
+	sudo ./juicer.sh
 	exit 0
 fi
 
