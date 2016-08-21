@@ -12,7 +12,7 @@ BLACK='\033[0m'
 CYAN='\e[96m'
 GREEN='\e[92m'
 
-PATH=$(pwd)
+SCRIPTPATH=$(pwd)
 
 # Make sure all Scripts in this folder are executable
 sudo chmod -R 775 * >/dev/null 2>&1
@@ -72,11 +72,12 @@ case $option in
 	    echo -e $YELLOW'--->Checking for updates...'$BLACK
 		git reset --hard
 		git pull
+		sudo chmod -R 775 * >/dev/null 2>&1
 		echo
 		pause 'Press [Enter] to restart and continue...'
-		cd $PATH
-		echo $PATH
+		cd $SCRIPTPATH
 		sudo ./juicer.sh
+		exit 0
 		;;
 
 	1 | 01)
