@@ -39,12 +39,43 @@ function title()
 	echo
 	echo -e $GREEN'Check Network Settings'
 	echo
+
+	agree
+}
+
+function agree()
+{
+	########################### Show AGREEMENT Information ###########################
+
+	echo -e $BLACK'--->Check Network Settings'
+	echo 
+	echo -e $RED'1. This script has been tested on Ubuntu (Server & Desktop).'
+	echo -e '2. The author(s) cannot be held accountable for any problems that might occur if you run this script.'
+	echo -e '3. Proceed only if you authorize this script to make changes to your system.'$BLACK
+	echo
+
+	read -p 'Type y/Y and press [ENTER] to AGREE and continue or press any other key to exit: '
+	RESP=${REPLY,,}
+
+	########################### Exit to Main Menu ###########################
+
+	if [ "$RESP" != "y" ] 
+	then
+		echo -e $RED"That's cool. We're here to help if you decide otherwise."$BLACK
+		echo
+		pause 'Press [Enter] to go back to the Main Menu...'
+		cd $SCRIPTPATH
+		sudo ./juicer.sh
+		exit 0
+	fi
 }
 
 ########################### Show Menu Options ###########################
 function options()
 {
 	title
+
+	agree
 
 	echo -e $YELLOW'@---@---@---@---@---@--- CHOOSE ---@---@---@---@---@---@'
 	echo -e $YELLOW'01. '$BLACK'View - Running Details'
@@ -180,32 +211,6 @@ function display_dns()
 }
 
 
-
-
-########################### Show START Information ###########################
-title
-
-echo -e $BLACK'--->Check Network Settings'
-echo 
-echo -e $RED'1. This script has been tested on Ubuntu (Server & Desktop).'
-echo -e '2. The author(s) cannot be held accountable for any problems that might occur if you run this script.'
-echo -e '3. Proceed only if you authorize this script to make changes to your system.'$BLACK
-echo
-
-read -p 'Type y/Y and press [ENTER] to AGREE and continue or press any other key to exit: '
-RESP=${REPLY,,}
-
-########################### Exit to Main Menu ###########################
-
-if [ "$RESP" != "y" ] 
-then
-	echo -e $RED"That's cool. We're here to help if you decide otherwise."$BLACK
-	echo
-	pause 'Press [Enter] to go back to the Main Menu...'
-	cd $SCRIPTPATH
-	sudo ./juicer.sh
-	exit 0
-fi
 
 ########################### START EXECUTION ###########################
 options
