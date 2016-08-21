@@ -75,8 +75,6 @@ function options()
 {
 	title
 
-	agree
-
 	echo -e $YELLOW'@---@---@---@---@---@--- CHOOSE ---@---@---@---@---@---@'
 	echo -e $YELLOW'01. '$BLACK'View - Running Details'
 	echo -e $YELLOW'02. '$BLACK'View - Configuration File Details'
