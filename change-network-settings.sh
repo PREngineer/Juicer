@@ -483,14 +483,9 @@ function display_wifi()
 	echo
 }
 
-########################### Prompt for the Interface to edit ###########################
+########################### START EXECUTION ###########################
 
-echo -e $YELLOW'--->Getting ready to change Network Settings...'$BLACK
-sudo nano /etc/network/interfaces
-
-echo
-echo -e $GREEN'--->All done. '$BLACK
-
+options
 
 
 ########################### Restarting Network Services ###########################
@@ -500,5 +495,8 @@ echo -e $YELLOW'--->Restarting Network Services...'$BLACK
 sudo /etc/init.d/networking restart
 echo
 echo -e $GREEN'--->All done. '$BLACK
+
+options
+echo -e $GREEN"Changes were applied."
 
 exit 0
