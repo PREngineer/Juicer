@@ -483,6 +483,40 @@ function display_wifi()
 	echo
 }
 
+function change_dns()
+{
+	########################### Prompt for IP Address ###########################
+	title
+	
+	echo -e $BLACK"Enter the desired DNS Server : "$CYAN
+	read dns
+	echo "nameserver $dns" > \etc\resolv.conf
+
+	another = 'y'
+	while [another -eq 'y' || another -eq 'Y']
+	do
+		echo -e $BLACK"Add another DNS? [y/n] : "
+		read another
+
+		case $another in
+
+			'y' | 'Y')
+		        echo -e $BLACK"Enter the desired DNS Server : "$CYAN
+				read plus
+				echo "nameserver $plus" >> \etc\resolv.conf
+		        ;;
+
+		    'n' | 'N')
+		        echo -e $BLACK"Setting System's Primary DNS..."
+		        ;;
+
+		    *)
+		       	echo -e $RED"Invalid Option.  Enter 'y' or 'n' and press [ENTER]: "$BLACK
+		esac
+	done
+
+
+}
 ########################### START EXECUTION ###########################
 
 options
