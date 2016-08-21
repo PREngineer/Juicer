@@ -54,20 +54,7 @@ function agree()
 	echo -e '3. Proceed only if you authorize this script to make changes to your system.'$BLACK
 	echo
 
-	read -p 'Type y/Y and press [ENTER] to AGREE and continue or press any other key to exit: '
-	RESP=${REPLY,,}
-
-	########################### Exit to Main Menu ###########################
-
-	if [ "$RESP" != "y" ] 
-	then
-		echo -e $RED"That's cool. We're here to help if you decide otherwise."$BLACK
-		echo
-		pause 'Press [Enter] to go back to the Main Menu...'
-		cd $SCRIPTPATH
-		sudo ./juicer.sh
-		exit 0
-	fi
+	echo -e 'Continue to AGREE.  Otherwise press [CTRL + C]'
 }
 
 ########################### Show Menu Options ###########################
