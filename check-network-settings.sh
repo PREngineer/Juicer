@@ -110,7 +110,8 @@ function options()
 
 	    99 | 99)
 			cd $SCRIPTPATH
-	        sudo ./juicer
+			sudo ./juicer.sh
+			exit 0
 	        ;;
 
 	    *)
