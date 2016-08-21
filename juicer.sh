@@ -57,11 +57,11 @@ echo -e 'CONTINUE TO AGREE.  OTHERWISE PRESS    [ C T R L   +   C ]'$BLACK
 echo
 
 echo -e $YELLOW'@---@---@---@---@---@--- ADMIN ---@---@---@---@---@---@'
-echo -e $YELLOW'00. '$BLACK'Update Juicer for Orange Pi'
+echo -e $YELLOW'[00] '$BLACK'Update Juicer for Orange Pi'
 echo -e $YELLOW'@---@---@---@---@---@--- NETWORK ---@---@---@---@---@---@'
-echo -e $YELLOW'01. '$BLACK'Check Network Settings'
-echo -e $YELLOW'02. '$BLACK'Change Network Settings'
-echo -e $YELLOW'99. '$BLACK'Exit'
+echo -e $YELLOW'[01] '$BLACK'Check Network Settings'
+echo -e $YELLOW'[02] '$BLACK'Change Network Settings'
+echo -e $YELLOW'[99] '$BLACK'Exit'
 
 echo
 echo -n "Choose your action [00-99]: "

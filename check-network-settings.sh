@@ -62,14 +62,14 @@ function options()
 	title
 
 	echo -e $YELLOW'@---@---@---@---@---@--- CHOOSE ---@---@---@---@---@---@'
-	echo -e $YELLOW'01. '$BLACK'View - Running Details'
-	echo -e $YELLOW'02. '$BLACK'View - Configuration File Details'
-	echo -e $YELLOW'03. '$BLACK'View - Registered WiFi Adapter Details'
-	echo -e $YELLOW'04. '$BLACK'View - Primary DNS'
+	echo -e $YELLOW'[01] '$BLACK'View - Running Details'
+	echo -e $YELLOW'[02] '$BLACK'View - Configuration File Details'
+	echo -e $YELLOW'[03] '$BLACK'View - Registered WiFi Adapter Details'
+	echo -e $YELLOW'[04] '$BLACK'View - Primary DNS'
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
-	echo -e $YELLOW'05. '$BLACK'TEST - Internet Speed (Speedtest)'
+	echo -e $YELLOW'[05] '$BLACK'Test - Internet Speed (Speedtest)'
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
-	echo -e $YELLOW'99. '$BLACK'View - Go back to Main Menu'
+	echo -e $YELLOW'[99] '$BLACK'Exit - Go back to Main Menu'
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
 	echo
 	echo -e 'Type your choice and press [ENTER]: '
