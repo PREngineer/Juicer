@@ -67,6 +67,8 @@ function options()
 	echo -e $YELLOW'03. '$BLACK'View - Registered WiFi Adapter Details'
 	echo -e $YELLOW'04. '$BLACK'View - Primary DNS'
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
+	echo -e $YELLOW'05. '$BLACK'TEST - Internet Speed (Speedtest)'
+	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
 	echo -e $YELLOW'99. '$BLACK'View - Go back to Main Menu'
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
 	echo
@@ -90,6 +92,10 @@ function options()
 
 	   	4 | 04)
 	        display_dns
+	        ;;
+
+	    5 | 05)
+	        speed_test
 	        ;;
 
 	    99 | 99)
@@ -195,7 +201,20 @@ function display_dns()
 	echo
 }
 
+########################### Run Speed Test ###########################
+function speed_test()
+{
+	title
+	echo -e "---------------------------------"
+	echo -e "     TESTING CONNECTION SPEED    "
+	echo -e "---------------------------------"
+	speedtest --share
 
+	echo
+	pause 'Press [Enter] to go back to the Check Network Menu'
+	options
+	echo
+}
 
 ########################### START EXECUTION ###########################
 options
