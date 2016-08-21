@@ -308,7 +308,7 @@ function add_wifi()
 	fi
 }
 
-funcion validate_wifi()
+function validate_wifi()
 {
 	########################### Retrieved configured devices ###########################
 	ifconfig -a | grep 'eth' | awk '{print $1}' > eth
