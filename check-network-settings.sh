@@ -52,7 +52,7 @@ function options()
 	echo -e $YELLOW'03. '$BLACK'View - Registered WiFi Adapter Details'
 	echo -e $YELLOW'04. '$BLACK'View - Primary DNS'
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
-	echo -e $YELLOW'04. '$BLACK'View - Go back to Main Menu'
+	echo -e $YELLOW'99. '$BLACK'View - Go back to Main Menu'
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
 	echo
 	echo -e 'Type your choice and press [ENTER]: '
@@ -75,6 +75,11 @@ function options()
 
 	   	4 | 04)
 	        display_dns
+	        ;;
+
+	    99 | 99)
+			cd $SCRIPTPATH
+	        sudo ./juicer
 	        ;;
 
 	    *)
@@ -166,7 +171,7 @@ function display_dns()
 
 	cat /etc/resolv.conf | grep -o -P '(?<=nameserver ).*(?=)'
 		
-	echo -e "---------------------------------"
+	echo -e "---------------------------------" $BLACK
 
 	echo
 	pause 'Press [Enter] to go back to the Check Network Menu'
