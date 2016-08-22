@@ -359,6 +359,9 @@ function validate_wifi()
 	        echo -e "${wlans[i]}"
 	done
 	echo -e "--------------"
+	echo
+	
+	pause 'Press [Enter] to continue...'
 }
 
 ########################### Write File ###########################
