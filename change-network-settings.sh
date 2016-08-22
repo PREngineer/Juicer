@@ -340,13 +340,14 @@ function add_wifi()
 	read pass
 	
 	########################### Clear File ###########################
-	if [$erase == $true]
+	if [$erase -eq 1]
 	then 
 		write_wifi_clear
-	
+		echo "ERASE!"
 	########################### Just Add to File ###########################
 	else 
 		add_wifi_write
+		echo "NOT ERASE!"
 	fi
 }
 
