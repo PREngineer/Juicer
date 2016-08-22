@@ -467,25 +467,25 @@ function clear_wifi()
 ########################### Clear & Write File ###########################
 function write_wifi_clear()
 {
-	echo "# Network Configuration by Juicer for Orange Pi\n" > interfaces
-	echo "auto lo\n" >> interfaces
-	echo "iface lo inet loopback\n" >> interfaces
-	echo "\n" >> interfaces
-	echo "auto eth0\n" >> interfaces
-	echo "iface eth0 inet dhcp\n" >> interfaces
-	echo "\n" >> interfaces
-	echo "auto $wlan\n" >> interfaces
-	echo "iface $wlan inet $mode\n" >> interfaces
+	echo "# Network Configuration by Juicer for Orange Pi" > interfaces
+	echo "auto lo" >> interfaces
+	echo "iface lo inet loopback" >> interfaces
+	echo "" >> interfaces
+	echo "auto eth0" >> interfaces
+	echo "iface eth0 inet dhcp" >> interfaces
+	echo "" >> interfaces
+	echo "auto $wlan" >> interfaces
+	echo "iface $wlan inet $mode" >> interfaces
 
 	if [ "$mode" == "static" ]
 	then 
-		echo "	address $address\n" >> interfaces
-		echo "	netmask $netmask\n" >> interfaces
-		echo "	gateway $gateway\n" >> interfaces
-		echo "	dns-nameservers $dns\n" >> interfaces
-		echo "	broadcast $broadcast\n" >> interfaces
-		echo "	network $network\n" >> interfaces
-		echo "	wpa-ssid $wifi\n" >> interfaces
+		echo "	address $address" >> interfaces
+		echo "	netmask $netmask" >> interfaces
+		echo "	gateway $gateway" >> interfaces
+		echo "	dns-nameservers $dns" >> interfaces
+		echo "	broadcast $broadcast" >> interfaces
+		echo "	network $network" >> interfaces
+		echo "	wpa-ssid $wifi" >> interfaces
 		echo "	wpa-psk $pass" >> interfaces
 	fi
 
@@ -498,19 +498,19 @@ function add_wifi_write()
 	sudo cp /etc/network/interfaces interfaces
 
 	echo "" >> interfaces
-	echo "auto $wlan\n" >> interfaces
-	echo "iface $wlan inet $mode\n" >> interfaces
+	echo "auto $wlan" >> interfaces
+	echo "iface $wlan inet $mode" >> interfaces
 
 	if [ "$mode" == "static" ]
 	then 
-		echo "	address $address\n" >> interfaces
-		echo "	netmask $netmask\n" >> interfaces
-		echo "	gateway $gateway\n" >> interfaces
-		echo "	dns-nameservers $dns\n" >> interfaces
-		echo "	broadcast $broadcast\n" >> interfaces
-		echo "	network $network\n" >> interfaces
-		echo "	wpa-ssid $wifi\n" >> interfaces
-		echo "	wpa-psk $pass\n" >> interfaces
+		echo "	address $address" >> interfaces
+		echo "	netmask $netmask" >> interfaces
+		echo "	gateway $gateway" >> interfaces
+		echo "	dns-nameservers $dns" >> interfaces
+		echo "	broadcast $broadcast" >> interfaces
+		echo "	network $network" >> interfaces
+		echo "	wpa-ssid $wifi" >> interfaces
+		echo "	wpa-psk $pass" >> interfaces
 	fi
 
 	sudo mv interfaces /etc/network/
