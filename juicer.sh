@@ -57,7 +57,7 @@ echo -e '║'$RED'        CONTINUE TO AGREE.  OTHERWISE PRESS    [ C T R L   +  
 echo -e '╚═════════════════════════════════════════════════════════════════════════════════════════════════════════╝'
 echo
 echo -e '-----------------------------------------------------------------------------------------------------------'
-echo -e $YELLOW'AVAILABLE\t'$CYAN'NOT AVAILABLE YET'
+echo -e $BLACK'AVAILABLE\t'$CYAN'NOT AVAILABLE YET'
 echo -e '-----------------------------------------------------------------------------------------------------------'
 echo -e $YELLOW'@---@---@---@---@---@--- ADMIN ---@---@---@---@---@---@'
 echo -e $YELLOW'[00] '$BLACK'Update Juicer for Orange Pi'
@@ -99,10 +99,10 @@ echo -e $YELLOW'[] '$CYAN' Server 		[]'
 echo
 echo -e $YELLOW'@---@---@---@---@---@--- SOFTWARE ---@---@---@---@---@---@'
 echo -e $YELLOW'[] '$CYAN'Wordpress	 		[Content Management System for Web]'
-echo -e $YELLOW'[] '$CYAN'Joomla 				[Content Management System for Web]'
+echo -e $YELLOW'[] '$CYAN'Joomla 			[Content Management System for Web]'
 echo
 echo -e $YELLOW'@---@---@---@---@---@--- GAMES ---@---@---@---@---@---@'
-echo -e $YELLOW'[] '$CYAN'Minecraft Server		[Host your own Minecraft]'
+echo -e $YELLOW'[] '$CYAN'Minecraft Server	[Host your own Minecraft]'
 echo
 echo -e $YELLOW'@---@---@---@---@---@--- REBOOT ---@---@---@---@---@---@'
 echo -e $YELLOW'[98] '$CYAN'Restart Orange Pi [Sometimes necessary after changes]'
