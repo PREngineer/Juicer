@@ -37,7 +37,7 @@ function title()
 	echo -e "╚══════════════════════════════════════════════╝ for Orange Pis"
 	echo -e $CYAN"          Brought to you by PREngineer"
 	echo
-	echo -e $GREEN'Check Network Settings Menu'$BLACK
+	echo -e $GREEN'Change Network Settings Menu'$BLACK
 	echo
 
 	agree
@@ -262,7 +262,7 @@ function add_wifi()
 	echo -e "your Network's mask."
 	echo -e "--------------------------------------------------------"
 	echo
-	echo -e $BLACK"Enter the desired Network Mask : "$CYAN
+	echo -e $BLACK"Enter the desired Gateway : "$CYAN
 	read gateway
 
 	########################### Prompt for DNS ###########################
@@ -407,26 +407,26 @@ function clear_wifi()
 ########################### Clear & Write File ###########################
 function write_wifi_clear()
 {
-	echo "# Network Configuration by Juicer for Orange Pi" > $text
-	echo "auto lo" >> $text
-	echo "iface lo inet loopback" >> $text
-	echo "" >> $text
-	echo "auto eth0" >> $text
-	echo "iface eth0 inet dhcp" >> $text
-	echo "" >> $text
-	echo "auto $wlan" >> $text
-	echo "iface $wlan inet $mode" >> $text
+	$text="# Network Configuration by Juicer for Orange Pi"
+	$text="auto lo"
+	$text="iface lo inet loopback"
+	$text=""
+	$text="auto eth0"
+	$text="iface eth0 inet dhcp"
+	$text=""
+	$text="auto $wlan"
+	$text="iface $wlan inet $mode"
 
 	if [ "$mode" -eq "static" ]
 	then 
-		echo "	address $address" >> $text
-		echo "	netmask $netmask" >> $text
-		echo "	gateway $gateway" >> $text
-		echo "	dns-nameservers $dns" >> $text
-		echo "	broadcast $broadcast" >> $text
-		echo "	network $network" >> $text
-		echo "	wpa-ssid $wifi" >> $text
-		echo "	wpa-psk $pass" >> $text
+		$text="	address $address"
+		$text="	netmask $netmask"
+		$text="	gateway $gateway"
+		$text="	dns-nameservers $dns"
+		$text="	broadcast $broadcast"
+		$text="	network $network"
+		$text="	wpa-ssid $wifi"
+		$text="	wpa-psk $pass"
 	fi
 
 	$text > /etc/network/interfaces
@@ -435,19 +435,19 @@ function write_wifi_clear()
 ########################### Add to File ###########################
 function add_wifi_write()
 {
-	echo "auto $wlan" >> $text
-	echo "iface $wlan inet $mode" >> $text
+	$text="auto $wlan"
+	$text="iface $wlan inet $mode"
 
 	if [ "$mode" -eq "static" ]
 	then 
-		echo "	address $address" >> $text
-		echo "	netmask $netmask" >> $text
-		echo "	gateway $gateway" >> $text
-		echo "	dns-nameservers $dns" >> $text
-		echo "	broadcast $broadcast" >> $text
-		echo "	network $network" >> $text
-		echo "	wpa-ssid $wifi" >> $text
-		echo "	wpa-psk $pass" >> $text
+		$text="	address $address"
+		$text="	netmask $netmask"
+		$text="	gateway $gateway"
+		$text="	dns-nameservers $dns"
+		$text="	broadcast $broadcast"
+		$text="	network $network"
+		$text="	wpa-ssid $wifi"
+		$text="	wpa-psk $pass"
 	fi
 
 	$text > /etc/network/interfaces
