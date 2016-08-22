@@ -14,6 +14,8 @@ GREEN='\e[92m'
 
 SCRIPTPATH=$(pwd)
 
+erase=$false
+
 function pause()
 {
    read -p "$*"
@@ -137,7 +139,6 @@ function add_wifi()
 
 	# Check that the changes can be applied
 	erase=$false
-	add=$false
 	validate_wifi
 
 	title
@@ -391,13 +392,11 @@ function validate_wifi()
 
 			'y' | 'Y')
 				clear_wifi
-				add=$false
 				break
 				;;
 
 			'n' | 'N')
 				echo -e $GREEN"OK, we are ready to add it to the configuration!  :)"
-				add=$true
 				break
 				;;
 
@@ -491,7 +490,6 @@ function write_wifi_clear()
 	fi
 
 	sudo mv interfaces /etc/network/
-	add=$false
 }
 
 ########################### Add to File ###########################
