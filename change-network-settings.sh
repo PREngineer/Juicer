@@ -388,6 +388,8 @@ function validate_wifi()
 
 function clear_wifi()
 {
+	title
+	
 	go=$true
 	while [$go -eq $true];
 	do
