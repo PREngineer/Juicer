@@ -342,9 +342,9 @@ function add_wifi()
 	if [$erase -eq $true]
 	then 
 		write_wifi_clear
-	fi
-	if [$add -eq $true]
-	then 
+	
+	########################### Just Add to File ###########################
+	else 
 		add_wifi_write
 	fi
 }
