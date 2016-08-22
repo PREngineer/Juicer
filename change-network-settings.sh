@@ -491,6 +491,7 @@ function write_wifi_clear()
 	fi
 
 	sudo mv interfaces /etc/network/
+	add=$false
 }
 
 ########################### Add to File ###########################
