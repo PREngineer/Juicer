@@ -328,7 +328,7 @@ function add_lan()
 	sudo ifup $eth
 }
 
-########################### Show WiFi Adapters ###########################
+########################### Show Ethernet Adapters ###########################
 function display_lan()
 {
 	title

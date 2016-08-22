@@ -66,9 +66,10 @@ function options()
 	echo -e $YELLOW'[01] '$BLACK'View - Running Details'
 	echo -e $YELLOW'[02] '$BLACK'View - Configuration File Details'
 	echo -e $YELLOW'[03] '$BLACK'View - Registered WiFi Adapter Details'
-	echo -e $YELLOW'[04] '$BLACK'View - Primary DNS'
+	echo -e $YELLOW'[04] '$BLACK'View - Registered Ethernet Adapter Details'
+	echo -e $YELLOW'[05] '$BLACK'View - Primary DNS'
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
-	echo -e $YELLOW'[05] '$BLACK'Test - Internet Speed (Speedtest)'
+	echo -e $YELLOW'[06] '$BLACK'Test - Internet Speed (Speedtest)'
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
 	echo -e $YELLOW'[99] '$BLACK'Exit - Go back to Main Menu'
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
@@ -91,11 +92,15 @@ function options()
 	        display_wifi
 	        ;;
 
-	   	4 | 04)
+	  	4 | 04)
+	        display_lan
+	        ;;
+
+	   	5 | 05)
 	        display_dns
 	        ;;
 
-	    5 | 05)
+	    6 | 06)
 	        speed_test
 	        ;;
 
@@ -144,6 +149,36 @@ function display_config()
 	pause 'Press [Enter] to go back to the Check Network Menu'
 	options
 	echo
+}
+
+########################### Show Ethernet Adapters ###########################
+function display_lan()
+{
+	title
+
+	echo 
+	echo -e $YELLOW'--->Retrieving Available LAN Adapter Details...'$BLACK
+	echo 
+
+	ifconfig -a | grep 'eth' | awk '{print $5}' > macs
+
+	ifconfig -a | grep 'eth' | awk '{print $1}' > names
+
+	mapfile -t macs < macs
+
+	mapfile -t names < names
+
+	echo -e "---------------------------------"
+	echo -e "Name \t MAC"
+	echo -e "---------------------------------"
+
+	for((i=0; i < ${#names[@]}; i++));
+	do
+	        echo -e "${names[i]} \t ${macs[i]}"
+	done
+	
+	echo -e "---------------------------------"
+	rm macs names
 }
 
 ########################### Show WiFi Adapters ###########################
