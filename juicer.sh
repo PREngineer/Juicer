@@ -59,7 +59,7 @@ echo
 echo -e '-----------------------------------------------------------------------------------------------------------'
 echo -e $BLACK'AVAILABLE\t'$CYAN'NOT AVAILABLE YET'
 echo -e '-----------------------------------------------------------------------------------------------------------'
-echo -e $YELLOW'@---@---@---@---@---@--- ADMIN ---@---@---@---@---@---@'
+echo -e $YELLOW'@---@---@---@---@---@--- UPDATE ---@---@---@---@---@---@'
 echo -e $YELLOW'[00] '$BLACK'Update Juicer for Orange Pi'
 echo
 echo -e $YELLOW'@---@---@---@---@---@--- NETWORK ---@---@---@---@---@---@'
@@ -104,7 +104,7 @@ echo
 echo -e $YELLOW'@---@---@---@---@---@--- GAMES ---@---@---@---@---@---@'
 echo -e $YELLOW'[] '$CYAN'Minecraft Server	[Host your own Minecraft]'
 echo
-echo -e $YELLOW'@---@---@---@---@---@--- REBOOT ---@---@---@---@---@---@'
+echo -e $YELLOW'@---@---@---@---@---@--- EXIT ---@---@---@---@---@---@'
 echo -e $YELLOW'[98] '$CYAN'Restart Orange Pi [Sometimes necessary after changes]'
 echo -e $YELLOW'[99] '$BLACK'Exit'
 
