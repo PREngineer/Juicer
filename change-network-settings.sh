@@ -131,6 +131,7 @@ function add_wifi()
 		    *)
 		       	echo -e $BLACK"Got it!  We will be modifying Interface '$wlan'."
 		       	break
+		       	;;
 		esac
 	done
 
@@ -139,8 +140,28 @@ function add_wifi()
 	add=$false
 	validate_wifi
 
-	echo -e $BLACK"Do you want to set up a 'static' or 'dhcp' configuration : "$CYAN
-	read mode
+	title
+	go=$true
+	while [$go -eq $true];
+	do
+		echo -e $BLACK"Do you want to set up a 'static' or 'dhcp' configuration : "$CYAN
+		read mode
+
+		case $mode in
+
+			'static' | 'dhcp')
+				break
+				;;
+
+			'')
+		        echo -e $RED"Please provide a value!"
+				;;
+
+		    *)
+		       	echo -e $BLACK"Invalid option!  Options are 'static' or 'dhcp'."
+		       	;;
+		esac
+	done
 
 	########################### Prompt for IP Address ###########################
 	title
