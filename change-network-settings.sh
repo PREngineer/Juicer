@@ -418,6 +418,7 @@ function clear_wifi()
 
 			'')
 				echo -e $RED"You must provide a choice!"
+				;;
 
 			*)
 				echo -e $RED"Choice is not valid.  Type one of the letter in brackets ( [] )"
