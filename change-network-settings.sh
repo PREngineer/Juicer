@@ -304,7 +304,7 @@ function add_wifi()
 	fi
 	if [$add]
 	then 
-		add_wifi
+		add_wifi_write
 	fi
 }
 
@@ -426,7 +426,7 @@ function write_wifi_clear()
 }
 
 ########################### Add to File ###########################
-function add_wifi()
+function add_wifi_write()
 {
 	echo "auto $wlan" >> $text
 	echo "iface $wlan inet $mode" >> $text
