@@ -114,6 +114,7 @@ function add_wifi()
 	display_wifi
 
 	########################### Prompt for WLAN & MODE ###########################
+	echo
 	echo -e $BLACK"Which Wireless Adapter do you want to configure? [wlanX] : "$CYAN
 	read wlan
 
@@ -346,25 +347,26 @@ function validate_wifi()
 
 	case $cannotAdd in
 
-	'y' | 'Y')
-		clear_wifi
-		;;
+		'y' | 'Y')
+			clear_wifi
+			;;
 
-	'n' | 'N')
-		echo -e $GREEN"OK, we are ready to add it to the configuration!  :)"
-		$add=$true
-		;;
+		'n' | 'N')
+			echo -e $GREEN"OK, we are ready to add it to the configuration!  :)"
+			add=$true
+			;;
 
-	*)
-		echo -e $RED"YOU HAVE TO CONFIRM THAT THE INTERFACE IS NOT ALREADY CONFIGURED!"
-		echo -e "Choice is not valid.  Type one of the letter in brackets ( [] )"
-		validate_wifi
-		;;
+		*)
+			echo -e $RED"YOU HAVE TO CONFIRM THAT THE INTERFACE IS NOT ALREADY CONFIGURED!"
+			echo -e "Choice is not valid.  Type one of the letter in brackets ( [] )"
+			validate_wifi
+			;;
 	esac
 }
 
 function clear_wifi()
 {
+	echo
 	echo -e $RED"Cannot add the same adapter twice.  You can:"
 	echo -e "[c] - Clear the Configuration file."
 	echo -e "[e] - Edit the Configuration file."
@@ -374,25 +376,25 @@ function clear_wifi()
 	
 	case $choice in
 
-	'c' | 'C')
-		$erase=$true
-		echo -e $YELLOW"Clearing previous Configuration File."
-		;;
+		'c' | 'C')
+			erase=$true
+			echo -e $YELLOW"Clearing previous Configuration File."
+			;;
 
-	'e' | 'E')
-		echo -e $YELLOW"Going back to Previous Menu, select Option [3]"
-		options
-		;;
+		'e' | 'E')
+			echo -e $YELLOW"Going back to Previous Menu, select Option [3]"
+			options
+			;;
 
-	'q' | 'Q')
-		echo -e $YELLOW"Going back to Main Menu"
-		cd $SCRIPTPATH
-		sudo ./juicer.sh
-		;;
+		'q' | 'Q')
+			echo -e $YELLOW"Going back to Main Menu"
+			cd $SCRIPTPATH
+			sudo ./juicer.sh
+			;;
 
-	*)
-		echo -e $RED"Choice is not valid.  Type one of the letter in brackets ( [] )"
-		;;
+		*)
+			echo -e $RED"Choice is not valid.  Type one of the letter in brackets ( [] )"
+			;;
 
 	esac
 }
