@@ -433,8 +433,8 @@ function add_wifi()
 		esac
 	done
 
-	if [$mode -eq "static"]
-	then
+	if ["$mode" == "static"]
+		then
 		########################### Prompt for IP Address ###########################
 		title
 		echo -e $YELLOW"--------------------------------------------------------"
