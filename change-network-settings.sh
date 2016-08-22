@@ -27,18 +27,18 @@ function title()
 	# Display the Title Information
 	echo 
 	echo -e $RED
-	echo -e "     ██╗██╗   ██╗██╗ ██████╗███████╗██████╗"
-	echo -e "     ██║██║   ██║██║██╔════╝██╔════╝██╔══██╗"
-	echo -e "     ██║██║   ██║██║██║     █████╗  ██████╔╝"
-	echo -e "██   ██║██║   ██║██║██║     ██╔══╝  ██╔══██╗"
-	echo -e "╚█████╔╝╚██████╔╝██║╚██████╗███████╗██║  ██║"
-	echo -e " ╚════╝  ╚═════╝ ╚═╝ ╚═════╝╚══════╝╚═╝  ╚═╝"
-
-	echo -e $CYAN
-	echo -e "Brought to you by PREngineer"
+	echo -e "╔══════════════════════════════════════════════╗"
+	echo -e "║      ██╗██╗   ██╗██╗ ██████╗███████╗██████╗  ║"
+	echo -e "║      ██║██║   ██║██║██╔════╝██╔════╝██╔══██╗ ║"
+	echo -e "║      ██║██║   ██║██║██║     █████╗  ██████╔╝ ║"
+	echo -e "║ ██   ██║██║   ██║██║██║     ██╔══╝  ██╔══██╗ ║"
+	echo -e "║ ╚█████╔╝╚██████╔╝██║╚██████╗███████╗██║  ██║ ║"
+	echo -e "║  ╚════╝  ╚═════╝ ╚═╝ ╚═════╝╚══════╝╚═╝  ╚═╝ ║"
+	echo -e "╚══════════════════════════════════════════════╝ for Orange Pis"
+	echo -e $CYAN"          Brought to you by PREngineer"
 	echo
-	echo -e $GREEN'Change Network Settings'
-	echo 
+	echo -e $GREEN'Check Network Settings Menu'$BLACK
+	echo
 
 	agree
 }
@@ -47,12 +47,13 @@ function agree()
 {
 	########################### Show AGREEMENT Information ###########################
 
-	echo -e $RED'1. This script has been tested on Ubuntu (Server & Desktop).'
-	echo -e '2. The author(s) cannot be held accountable for any problems that might occur if you run this script.'
-	echo -e '3. Proceed only if you authorize this script to make changes to your system.'
-	echo
-
-	echo -e 'CONTINUE TO AGREE.  OTHERWISE PRESS    [ C T R L   +   C ]'$BLACK
+	echo -e "╔═════════════════════════════════════════════════════════════════════════════════════════════════════════╗"
+	echo -e '║'$RED' 1. This script has been tested on Ubuntu (Server & Desktop).'$BLACK'                                            ║'
+	echo -e '║'$RED' 2. The author(s) cannot be held accountable for any problems that might occur if you run this script.'$BLACK'   ║'
+	echo -e '║'$RED' 3. Proceed only if you authorize this script to make changes to your system.'$BLACK'                            ║'
+	echo -e '║═════════════════════════════════════════════════════════════════════════════════════════════════════════║'
+	echo -e '║'$RED'        CONTINUE TO AGREE.  OTHERWISE PRESS    [ C T R L   +   C ]'$BLACK'                                       ║'
+	echo -e '╚═════════════════════════════════════════════════════════════════════════════════════════════════════════╝'
 	echo
 }
 
@@ -129,8 +130,8 @@ function add_wifi()
 	########################### Prompt for IP Address ###########################
 	title
 	echo -e $YELLOW"--------------------------------------------------------"
-	echo -e "An IP Address is the UNIQUE identifier of your device in your"
-	echo -e "Network.  It usually is:"
+	echo -e "An IP Address is the UNIQUE identifier of your device in"
+	echo -e "your Network.  It usually is:"
 	echo -e "                      192.168.0.x"
 	echo -e "                           OR"
 	echo -e "                      10.0.0.x"
@@ -273,14 +274,17 @@ function add_wifi()
 	echo -e "DNS Server.  You can use multiple DNS Servers.  Just"
 	echo -e "separate each one with a space.  You can use public DNS"
 	echo -e "servers like Google or Open DNS, or your ISP's.  Like: "
-	echo -e "   Google:          '8.8.8.8 8.8.4.4'"
-	echo -e "   OpenDNS: '208.67.222.222 208.67.220.220'"
+	echo -e " Google:          '8.8.8.8 8.8.4.4'"
+	echo -e " OpenDNS: '208.67.222.222 208.67.220.220'"
+	echo -e " Mixed:   '208.67.222.222 8.8.8.8 8.8.4.4 208.67.220.220"
 	echo -e "--------------------------------------------------------"
-	echo -e $RED"MAKE SURE TO USE THE ONE SPECIFIED FOR YOUR NETWORK!"$YELLOW
+	echo -e $RED"MAKE SURE TO USE VALID ADDRESSES!"$YELLOW
 	echo -e "--------------------------------------------------------"
-	echo -e "-- Checking your MASK in WINDOWS --"
+	echo -e "-- Figuring Out Your DNS --"
 	echo -e "A quick google search will give you your ISP's DNS or"
 	echo -e "you can just call them and ask for it."
+	echo -e "The Samples for Google and OpenDNS are accurate as of"
+	echo -e "the creation of this tool.  Aug/21/2016"
 	echo -e "--------------------------------------------------------"
 	echo
 	echo -e $BLACK"Enter the desired DNS Servers : "$CYAN
@@ -299,11 +303,11 @@ function add_wifi()
 	read pass
 	
 	########################### Clear File ###########################
-	if [$erase]
+	if [$erase -eq $true]
 	then 
 		write_wifi_clear
 	fi
-	if [$add]
+	if [$add -eq $true]
 	then 
 		add_wifi_write
 	fi
@@ -324,13 +328,11 @@ function validate_wifi()
 
 	echo -e "--------------"
 	echo -e "---Ethernet---"
-	echo -e "--------------"
 	for((i=0; i < ${#eths[@]}; i++));
 	do
 	        echo -e "${eths[i]}"
 	done
 	echo -e "---Wireless---"
-	echo -e "--------------"
 	for((i=0; i < ${#wlans[@]}; i++));
 	do
 	        echo -e "${wlans[i]}"
@@ -378,15 +380,18 @@ function clear_wifi()
 
 		'c' | 'C')
 			erase=$true
-			echo -e $YELLOW"Clearing previous Configuration File."
+			echo
+			echo -e $YELLOW"Clearing previous Configuration File..."
 			;;
 
 		'e' | 'E')
+			echo
 			echo -e $YELLOW"Going back to Previous Menu, select Option [3]"
 			options
 			;;
 
 		'q' | 'Q')
+			echo
 			echo -e $YELLOW"Going back to Main Menu"
 			cd $SCRIPTPATH
 			sudo ./juicer.sh

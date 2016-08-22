@@ -36,25 +36,26 @@ clear
 # Display the Title Information
 echo 
 echo -e $RED
-echo -e "     ██╗██╗   ██╗██╗ ██████╗███████╗██████╗"
-echo -e "     ██║██║   ██║██║██╔════╝██╔════╝██╔══██╗"
-echo -e "     ██║██║   ██║██║██║     █████╗  ██████╔╝"
-echo -e "██   ██║██║   ██║██║██║     ██╔══╝  ██╔══██╗"
-echo -e "╚█████╔╝╚██████╔╝██║╚██████╗███████╗██║  ██║"
-echo -e " ╚════╝  ╚═════╝ ╚═╝ ╚═════╝╚══════╝╚═╝  ╚═╝"
-                                            
-echo -e $CYAN
-echo -e "Brought to you by PREngineer"
+echo -e "╔══════════════════════════════════════════════╗"
+echo -e "║      ██╗██╗   ██╗██╗ ██████╗███████╗██████╗  ║"
+echo -e "║      ██║██║   ██║██║██╔════╝██╔════╝██╔══██╗ ║"
+echo -e "║      ██║██║   ██║██║██║     █████╗  ██████╔╝ ║"
+echo -e "║ ██   ██║██║   ██║██║██║     ██╔══╝  ██╔══██╗ ║"
+echo -e "║ ╚█████╔╝╚██████╔╝██║╚██████╗███████╗██║  ██║ ║"
+echo -e "║  ╚════╝  ╚═════╝ ╚═╝ ╚═════╝╚══════╝╚═╝  ╚═╝ ║"
+echo -e "╚══════════════════════════════════════════════╝ for Orange Pis"
+echo -e $CYAN"          Brought to you by PREngineer"
 echo
-echo -e $GREEN'JUICER for Orange Pi'$BLACK
+echo -e $GREEN'Main Menu'$BLACK
 echo 
 
-echo -e $RED'1. This script has been tested on Ubuntu (Server & Desktop).'
-echo -e '2. The author(s) cannot be held accountable for any problems that might occur if you run this script.'
-echo -e '3. Proceed only if you authorize this script to make changes to your system.'
-echo
-echo -e 'CONTINUE TO AGREE.  OTHERWISE PRESS    [ C T R L   +   C ]'$BLACK
-echo
+echo -e "╔═════════════════════════════════════════════════════════════════════════════════════════════════════════╗"
+echo -e '║'$RED' 1. This script has been tested on Ubuntu (Server & Desktop).'$BLACK'                                            ║'
+echo -e '║'$RED' 2. The author(s) cannot be held accountable for any problems that might occur if you run this script.'$BLACK'   ║'
+echo -e '║'$RED' 3. Proceed only if you authorize this script to make changes to your system.'$BLACK'                            ║'
+echo -e '║═════════════════════════════════════════════════════════════════════════════════════════════════════════║'
+echo -e '║'$RED'        CONTINUE TO AGREE.  OTHERWISE PRESS    [ C T R L   +   C ]'$BLACK'                                       ║'
+echo -e '╚═════════════════════════════════════════════════════════════════════════════════════════════════════════╝'
 
 echo -e $YELLOW'@---@---@---@---@---@--- ADMIN ---@---@---@---@---@---@'
 echo -e $YELLOW'[00] '$BLACK'Update Juicer for Orange Pi'
