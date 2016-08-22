@@ -14,7 +14,7 @@ GREEN='\e[92m'
 
 SCRIPTPATH=$(pwd)
 
-erase=$false
+erase=2
 
 function pause()
 {
@@ -138,7 +138,7 @@ function add_wifi()
 	done
 
 	# Check that the changes can be applied
-	erase=$false
+	erase=2
 	validate_wifi
 
 	title
@@ -340,12 +340,13 @@ function add_wifi()
 	read pass
 	
 	########################### Clear File ###########################
-	if [$erase -eq $true]
+	if [$erase -eq 1]
 	then 
 		write_wifi_clear
 		echo "ERASE!"
+	fi
 	########################### Just Add to File ###########################
-	else 
+	if [$erase -eq 2]
 		add_wifi_write
 		echo "NOT ERASE!"
 	fi
@@ -398,6 +399,7 @@ function validate_wifi()
 
 			'n' | 'N')
 				echo -e $GREEN"OK, we are ready to add it to the configuration!  :)"
+				erase=2
 				break
 				;;
 
@@ -434,7 +436,7 @@ function clear_wifi()
 				;;
 
 			'c' | 'C')
-				erase=$true
+				erase=1
 				echo
 				echo -e $YELLOW"Clearing previous Configuration File..."
 				break
@@ -478,7 +480,7 @@ function write_wifi_clear()
 	echo "auto $wlan" >> interfaces
 	echo "iface $wlan inet $mode" >> interfaces
 
-	if [[ "$mode" == "static" ]]
+	if [ "$mode" == "static" ]
 	then 
 		echo "	address $address" >> interfaces
 		echo "	netmask $netmask" >> interfaces
@@ -502,7 +504,7 @@ function add_wifi_write()
 	echo "auto $wlan" >> interfaces
 	echo "iface $wlan inet $mode" >> interfaces
 
-	if [[ "$mode" == "static" ]]
+	if [ "$mode" == "static" ]
 	then 
 		echo "	address $address" >> interfaces
 		echo "	netmask $netmask" >> interfaces
