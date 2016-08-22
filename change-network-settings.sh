@@ -656,6 +656,8 @@ function validate()
 	ifconfig -a | grep 'wlan' | awk '{print $1}' > wlan
 	mapfile -t wlans < wlan
 
+	rm eth wlan
+	
 	########################### Prompt for Clear of Config ###########################
 	title 
 	echo -e $BLACK"You have the following Interfaces/Adapters configured:"
