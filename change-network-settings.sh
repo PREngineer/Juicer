@@ -115,9 +115,23 @@ function add_wifi()
 	display_wifi
 
 	########################### Prompt for WLAN & MODE ###########################
-	echo
-	echo -e $BLACK"Which Wireless Adapter do you want to configure? [wlanX] : "$CYAN
-	read wlan
+	go=$true
+	while [$go -eq $true];
+	do
+		echo
+		echo -e $BLACK"Which Wireless Adapter do you want to configure? [wlanX] : "$CYAN
+		read wlan
+
+		case $wlan in
+
+			'')
+		        echo -e $RED"Please provide a value!"
+				;;
+
+		    *)
+		       	echo -e $BLACK"Got it!  We will be modifying Interface '$wlan'."
+		esac
+	done
 
 	# Check that the changes can be applied
 	erase=$false
@@ -436,7 +450,7 @@ function write_wifi_clear()
 function add_wifi_write()
 {
 	sudo cp /etc/network/interfaces interfaces
-	
+
 	echo "" >> interfaces
 	echo "auto $wlan\n" >> interfaces
 	echo "iface $wlan inet $mode\n" >> interfaces
