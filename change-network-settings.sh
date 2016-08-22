@@ -340,7 +340,7 @@ function add_wifi()
 	read pass
 	
 	########################### Clear File ###########################
-	if [$erase -eq 1]
+	if [[$erase -eq $true]]
 	then 
 		write_wifi_clear
 		echo "ERASE!"
@@ -478,7 +478,7 @@ function write_wifi_clear()
 	echo "auto $wlan" >> interfaces
 	echo "iface $wlan inet $mode" >> interfaces
 
-	if [ "$mode" == "static" ]
+	if [[ "$mode" == "static" ]]
 	then 
 		echo "	address $address" >> interfaces
 		echo "	netmask $netmask" >> interfaces
@@ -502,7 +502,7 @@ function add_wifi_write()
 	echo "auto $wlan" >> interfaces
 	echo "iface $wlan inet $mode" >> interfaces
 
-	if [ "$mode" == "static" ]
+	if [[ "$mode" == "static" ]]
 	then 
 		echo "	address $address" >> interfaces
 		echo "	netmask $netmask" >> interfaces
