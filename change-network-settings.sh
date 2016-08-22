@@ -375,7 +375,7 @@ function validate_wifi()
 
 		*)
 			echo -e $RED"YOU HAVE TO CONFIRM THAT THE INTERFACE IS NOT ALREADY CONFIGURED!"
-			echo -e "Choice is not valid.  Type one of the letter in brackets ( [] )"
+			echo -e "Choice is not valid.  Type 'y' or 'n'."
 			validate_wifi
 			;;
 	esac
@@ -383,40 +383,48 @@ function validate_wifi()
 
 function clear_wifi()
 {
-	echo
-	echo -e $RED"Cannot add the same adapter twice.  You can:"
-	echo -e "[c] - Clear the Configuration file."
-	echo -e "[e] - Edit the Configuration file."
-	echo -e "[q] - Quit to Main Menu"
-	echo -e $YELLOW"Type your choice and press [ENTER]: "$CYAN
-	read choice
-	
-	case $choice in
+	go=$true
+	while [$go -eq $true];
+	do
+		echo
+		echo -e $RED"Cannot add the same adapter twice.  You can:"
+		echo -e "[c] - Clear the Configuration file."
+		echo -e "[e] - Edit the Configuration file."
+		echo -e "[q] - Quit to Main Menu"
+		echo -e $YELLOW"Type your choice and press [ENTER]: "$CYAN
+		read choice
 
-		'c' | 'C')
-			erase=$true
-			echo
-			echo -e $YELLOW"Clearing previous Configuration File..."
-			;;
+		case $choice in
 
-		'e' | 'E')
-			echo
-			echo -e $YELLOW"Going back to Previous Menu, select Option [3]"
-			options
-			;;
+			'c' | 'C')
+				erase=$true
+				echo
+				echo -e $YELLOW"Clearing previous Configuration File..."
+				break
+				;;
 
-		'q' | 'Q')
-			echo
-			echo -e $YELLOW"Going back to Main Menu"
-			cd $SCRIPTPATH
-			sudo ./juicer.sh
-			;;
+			'e' | 'E')
+				echo
+				echo -e $YELLOW"Going back to Previous Menu, select Option [3]"
+				options
+				;;
 
-		*)
-			echo -e $RED"Choice is not valid.  Type one of the letter in brackets ( [] )"
-			;;
+			'q' | 'Q')
+				echo
+				echo -e $YELLOW"Going back to Main Menu"
+				cd $SCRIPTPATH
+				sudo ./juicer.sh
+				;;
 
-	esac
+			'')
+				echo -e $RED"You must provide a choice!"
+
+			*)
+				echo -e $RED"Choice is not valid.  Type one of the letter in brackets ( [] )"
+				;;
+
+		esac
+	done
 }
 
 ########################### Clear & Write File ###########################
