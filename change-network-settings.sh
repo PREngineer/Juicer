@@ -48,9 +48,9 @@ function agree()
 	########################### Show AGREEMENT Information ###########################
 
 	echo -e "╔═════════════════════════════════════════════════════════════════════════════════════════════════════════╗"
-	echo -e '║'$RED' 1. This script has been tested on Ubuntu (Server & Desktop).'$BLACK'                                            ║'
-	echo -e '║'$RED' 2. The author(s) cannot be held accountable for any problems that might occur if you run this script.'$BLACK'   ║'
-	echo -e '║'$RED' 3. Proceed only if you authorize this script to make changes to your system.'$BLACK'                            ║'
+	echo -e '║'$RED' 1. This tool has been tested on Ubuntu (Server & Desktop).'$BLACK'                                              ║'
+	echo -e '║'$RED' 2. The author(s) cannot be held accountable for any problems that might occur if you run this tool.'$BLACK'     ║'
+	echo -e '║'$RED' 3. Proceed only if you authorize this tool to make changes to your system.'$BLACK'                              ║'
 	echo -e '║═════════════════════════════════════════════════════════════════════════════════════════════════════════║'
 	echo -e '║'$RED'        CONTINUE TO AGREE.  OTHERWISE PRESS    [ C T R L   +   C ]'$BLACK'                                       ║'
 	echo -e '╚═════════════════════════════════════════════════════════════════════════════════════════════════════════╝'
