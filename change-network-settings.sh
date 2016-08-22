@@ -65,13 +65,13 @@ function options()
 	title
 
 	echo -e $YELLOW'@---@---@---@---@---@--- CHOOSE ---@---@---@---@---@---@'
-	echo -e $YELLOW'[01] '$BLACK'Add/Modify - Wireless Configuraton [WPA2-Personal]'
+	echo -e $YELLOW'[01] '$BLACK'Add/Modify - Wireless Configuraton [WEP & WPA2-Personal]'
 	echo -e $RED'\t- This option will make Ethernet DHCP.'$YELLOW
 	echo -e $YELLOW'[02] '$BLACK'Add/Modify - Ethernet Configuration'
 	echo -e $RED'\t- This option will remove WiFi.'$YELLOW
 	echo -e $YELLOW'[03] '$BLACK'Add/Modify - Primary DNS Configuration'
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
-	echo -e $YELLOW'[99] '$BLACK'View - Go back to Main Menu'
+	echo -e $YELLOW'[99] '$BLACK'Go back to Main Menu'
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
 	echo
 	echo -e 'Type your choice and press [ENTER]: '
@@ -331,6 +331,36 @@ function add_wifi()
 	read pass
 	
 	########################### Clear File ###########################
+	
+	title
+	go=$true
+	while [$go -eq $true];
+	do
+		echo -e $BLACK"What type of connection will you establish? 'WEP' or 'WPA2' : "$CYAN
+		read type
+
+		case $type in
+
+			'WEP')
+				write_wep_wifi
+				break
+				;;
+
+			'WPA2')
+				write_wpa2_wifi
+				break
+				;;
+
+			'')
+		        echo -e $RED"Please provide a value!"
+				;;
+
+		    *)
+		       	echo -e $BLACK"Invalid option!  Options are 'WEP' or 'WPA2'."
+		       	;;
+		esac
+	done
+
 	write_wifi
 }
 
@@ -360,12 +390,12 @@ function validate_wifi()
 	done
 	echo -e "--------------"
 	echo
-	
+
 	pause 'Press [Enter] to continue...'
 }
 
-########################### Write File ###########################
-function write_wifi()
+########################### Write WEP To File ###########################
+function write_wep_wifi()
 {
 	echo "# Network Configuration by Juicer for Orange Pi" > interfaces
 	echo "auto lo" >> interfaces
@@ -375,6 +405,36 @@ function write_wifi()
 	echo "iface eth0 inet dhcp" >> interfaces
 	echo "" >> interfaces
 	echo "auto $wlan" >> interfaces
+	echo "allow-hotplug $wlan" >> interfaces
+	echo "iface $wlan inet $mode" >> interfaces
+
+	if [ "$mode" == "static" ]
+	then 
+		echo "	address $address" >> interfaces
+		echo "	netmask $netmask" >> interfaces
+		echo "	gateway $gateway" >> interfaces
+		echo "	dns-nameservers $dns" >> interfaces
+		echo "	broadcast $broadcast" >> interfaces
+		echo "	network $network" >> interfaces
+		echo "	wireless-essid $wifi" >> interfaces
+		echo "	wireless-key $pass" >> interfaces
+	fi
+
+	sudo mv interfaces /etc/network/
+}
+
+########################### Write WPA2 To File ###########################
+function write_wpa2_wifi()
+{
+	echo "# Network Configuration by Juicer for Orange Pi" > interfaces
+	echo "auto lo" >> interfaces
+	echo "iface lo inet loopback" >> interfaces
+	echo "" >> interfaces
+	echo "auto eth0" >> interfaces
+	echo "iface eth0 inet dhcp" >> interfaces
+	echo "" >> interfaces
+	echo "auto $wlan" >> interfaces
+	echo "allow-hotplug $wlan" >> interfaces
 	echo "iface $wlan inet $mode" >> interfaces
 
 	if [ "$mode" == "static" ]
@@ -468,6 +528,8 @@ options
 
 echo 
 echo -e $YELLOW'--->Restarting Network Services...'$BLACK
+#sudo ifdown $wlan
+#sudo ifup $wlan
 sudo /etc/init.d/networking restart
 echo
 echo -e $GREEN'--->All done. '$BLACK
