@@ -179,6 +179,11 @@ function display_lan()
 	
 	echo -e "---------------------------------"
 	rm macs names
+
+	echo
+	pause 'Press [Enter] to go back to the Check Network Menu'
+	options
+	echo
 }
 
 ########################### Show WiFi Adapters ###########################
