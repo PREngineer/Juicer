@@ -37,7 +37,7 @@ function title()
 	echo -e "╚══════════════════════════════════════════════╝ for Orange Pis"
 	echo -e $CYAN"          Brought to you by PREngineer"
 	echo
-	echo -e $GREEN'Check Network Settings Menu'$BLACK
+	echo -e $GREEN'Check Network Settings'$BLACK
 	echo
 
 	agree
