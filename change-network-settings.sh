@@ -276,7 +276,7 @@ function add_wifi()
 	echo -e "servers like Google or Open DNS, or your ISP's.  Like: "
 	echo -e " Google:          '8.8.8.8 8.8.4.4'"
 	echo -e " OpenDNS: '208.67.222.222 208.67.220.220'"
-	echo -e " Mixed:   '208.67.222.222 8.8.8.8 8.8.4.4 208.67.220.220"
+	echo -e " Mixed:  '208.67.222.222 8.8.8.8 8.8.4.4 208.67.220.220'"
 	echo -e "--------------------------------------------------------"
 	echo -e $RED"MAKE SURE TO USE VALID ADDRESSES!"$YELLOW
 	echo -e "--------------------------------------------------------"
@@ -407,26 +407,26 @@ function clear_wifi()
 ########################### Clear & Write File ###########################
 function write_wifi_clear()
 {
-	$text="# Network Configuration by Juicer for Orange Pi"
-	$text="auto lo"
-	$text="iface lo inet loopback"
-	$text=""
-	$text="auto eth0"
-	$text="iface eth0 inet dhcp"
-	$text=""
-	$text="auto $wlan"
-	$text="iface $wlan inet $mode"
+	text="# Network Configuration by Juicer for Orange Pi\n"
+	$text+="auto lo\n"
+	$text+="iface lo inet loopback\n"
+	$text+="\n"
+	$text+="auto eth0\n"
+	$text+="iface eth0 inet dhcp\n"
+	$text+="\n"
+	$text+="auto $wlan\n"
+	$text+="iface $wlan inet $mode\n"
 
 	if [ "$mode" -eq "static" ]
 	then 
-		$text="	address $address"
-		$text="	netmask $netmask"
-		$text="	gateway $gateway"
-		$text="	dns-nameservers $dns"
-		$text="	broadcast $broadcast"
-		$text="	network $network"
-		$text="	wpa-ssid $wifi"
-		$text="	wpa-psk $pass"
+		$text+="	address $address\n"
+		$text+="	netmask $netmask\n"
+		$text+="	gateway $gateway\n"
+		$text+="	dns-nameservers $dns\n"
+		$text+="	broadcast $broadcast\n"
+		$text+="	network $network\n"
+		$text+="	wpa-ssid $wifi\n"
+		$text+="	wpa-psk $pass"
 	fi
 
 	$text > /etc/network/interfaces
@@ -435,19 +435,19 @@ function write_wifi_clear()
 ########################### Add to File ###########################
 function add_wifi_write()
 {
-	$text="auto $wlan"
-	$text="iface $wlan inet $mode"
+	text="auto $wlan\n"
+	$text+="iface $wlan inet $mode\n"
 
 	if [ "$mode" -eq "static" ]
 	then 
-		$text="	address $address"
-		$text="	netmask $netmask"
-		$text="	gateway $gateway"
-		$text="	dns-nameservers $dns"
-		$text="	broadcast $broadcast"
-		$text="	network $network"
-		$text="	wpa-ssid $wifi"
-		$text="	wpa-psk $pass"
+		$text+="	address $address\n"
+		$text+="	netmask $netmask\n"
+		$text+="	gateway $gateway\n"
+		$text+="	dns-nameservers $dns\n"
+		$text+="	broadcast $broadcast\n"
+		$text+="	network $network\n"
+		$text+="	wpa-ssid $wifi\n"
+		$text+="	wpa-psk $pass\n"
 	fi
 
 	$text > /etc/network/interfaces
