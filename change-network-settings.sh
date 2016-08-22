@@ -370,6 +370,7 @@ function validate_wifi()
 
 			'y' | 'Y')
 				clear_wifi
+				break
 				;;
 
 			'n' | 'N')
@@ -389,19 +390,26 @@ function validate_wifi()
 function clear_wifi()
 {
 	title
-	
+
 	go=$true
 	while [$go -eq $true];
 	do
 		echo
 		echo -e $RED"Cannot add the same adapter twice.  You can:"
-		echo -e "[c] - Clear the Configuration file."
-		echo -e "[e] - Edit the Configuration file."
+		echo -e "[c] - Clear the Configuration file"
+		echo -e "[e] - Edit the Configuration file"
+		echo -e "[b] - Go Back to Change Network Menu"
 		echo -e "[q] - Quit to Main Menu"
 		echo -e $YELLOW"Type your choice and press [ENTER]: "$CYAN
 		read choice
 
 		case $choice in
+
+			'b' | 'B')
+				echo
+				echo -e $YELLOW"Going back to Previous Menu..."
+				options
+				;;
 
 			'c' | 'C')
 				erase=$true
@@ -412,13 +420,13 @@ function clear_wifi()
 
 			'e' | 'E')
 				echo
-				echo -e $YELLOW"Going back to Previous Menu, select Option [3]"
+				echo -e $YELLOW"Going back to Previous Menu, select Option [3]."
 				options
 				;;
 
 			'q' | 'Q')
 				echo
-				echo -e $YELLOW"Going back to Main Menu"
+				echo -e $YELLOW"Quit to Main Menu..."
 				cd $SCRIPTPATH
 				sudo ./juicer.sh
 				;;
