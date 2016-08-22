@@ -130,6 +130,7 @@ function add_wifi()
 
 		    *)
 		       	echo -e $BLACK"Got it!  We will be modifying Interface '$wlan'."
+		       	break
 		esac
 	done
 
