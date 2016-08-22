@@ -27,9 +27,11 @@ echo -e "║  ╚════╝  ╚═════╝ ╚═╝ ╚═══�
 echo -e "╚══════════════════════════════════════════════╝ for Orange Pis"
 echo -e $CYAN"          Brought to you by PREngineer"
 echo
-echo -e $GREEN'installer'$BLACK
+echo -e $GREEN'Installer'$BLACK
 
+echo
 echo "Installing Juicer for Orange Pis"
+echo
 
 echo "#!/bin/sh
 ####################################
