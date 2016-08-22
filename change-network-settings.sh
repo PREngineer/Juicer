@@ -118,8 +118,8 @@ function add_wifi()
 	read wlan
 
 	# Check that the changes can be applied
-	erase=false
-	add=false
+	erase=$false
+	add=$false
 	validate_wifi
 
 	echo -e $BLACK"Do you want to set up a 'static' or 'dhcp' configuration : "$CYAN
@@ -298,11 +298,11 @@ function add_wifi()
 	read pass
 	
 	########################### Clear File ###########################
-	if [ "$erase" -eq true ]
+	if [$erase]
 	then 
 		write_wifi_clear
 	fi
-	if [ "$add" -eq true ]
+	if [$add]
 	then 
 		add_wifi
 	fi
@@ -352,7 +352,7 @@ function validate_wifi()
 
 	'n' | 'N')
 		echo -e $GREEN"OK, we are ready to add it to the configuration!  :)"
-		$add=true
+		$add=$true
 		;;
 
 	*)
@@ -375,7 +375,7 @@ function clear_wifi()
 	case $choice in
 
 	'c' | 'C')
-		$erase=true
+		$erase=$true
 		echo -e $YELLOW"Clearing previous Configuration File."
 		;;
 
@@ -492,10 +492,10 @@ function change_dns()
 	read dns
 	echo "nameserver $dns" > resolv.conf
 
-	another='y'
-	while [$another -eq 'y' || $another -eq 'Y']
+	go=$true
+	while [$go -eq $true];
 	do
-		echo -e $BLACK"Add another DNS? [y/n] : "
+		echo -e $BLACK"Add another DNS? [y/n] : "$CYAN
 		read another
 
 		case $another in
@@ -504,10 +504,11 @@ function change_dns()
 		        echo -e $BLACK"Enter the desired DNS Server : "$CYAN
 				read plus
 				echo "nameserver $plus" >> resolv.conf
-		        ;;
+				;;
 
 		    'n' | 'N')
 		        echo -e $BLACK"Setting System's Primary DNS..."
+		        break
 		        ;;
 
 		    *)
