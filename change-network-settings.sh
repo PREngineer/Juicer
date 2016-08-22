@@ -65,11 +65,11 @@ function options()
 	title
 
 	echo -e $YELLOW'@---@---@---@---@---@--- CHOOSE ---@---@---@---@---@---@'
-	echo -e $YELLOW'[01] '$BLACK'Add - NEW Wireless Configuraton [WPA2-Personal]'
-	echo -e $YELLOW'[02] '$BLACK'Add - NEW Ethernet Configuration'
-	echo -e $YELLOW'[03] '$BLACK'Edit - EXISTING Wireless Configuration'
-	echo -e $YELLOW'[04] '$BLACK'Edit - EXISTING Ethernet Configuration'
-	echo -e $YELLOW'[05] '$BLACK'Change - Primary DNS Servers Configuration'
+	echo -e $YELLOW'[01] '$BLACK'Add/Modify - Wireless Configuraton [WPA2-Personal]'
+	echo -e $RED'\t- This option will make Ethernet DHCP.'$YELLOW
+	echo -e $YELLOW'[02] '$BLACK'Add/Modify - Ethernet Configuration'
+	echo -e $RED'\t- This option will remove WiFi.'$YELLOW
+	echo -e $YELLOW'[03] '$BLACK'Add/Modify - Primary DNS Configuration'
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
 	echo -e $YELLOW'[99] '$BLACK'View - Go back to Main Menu'
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
@@ -89,14 +89,6 @@ function options()
 	        ;;
 
 	  	3 | 03)
-	        edit_wifi
-	        ;;
-
-	   	4 | 04)
-	        edit_lan
-	        ;;
-
-	    5 | 05)
 	        change_dns
 	        ;;
 
@@ -138,7 +130,6 @@ function add_wifi()
 	done
 
 	# Check that the changes can be applied
-	erase=2
 	validate_wifi
 
 	title
@@ -340,17 +331,7 @@ function add_wifi()
 	read pass
 	
 	########################### Clear File ###########################
-	if [$erase -eq 1]
-	then 
-		write_wifi_clear
-		echo "ERASE!"
-	fi
-	########################### Just Add to File ###########################
-	if [$erase -eq 2]
-	then
-		add_wifi_write
-		echo "NOT ERASE!"
-	fi
+	write_wifi
 }
 
 function validate_wifi()
@@ -378,98 +359,10 @@ function validate_wifi()
 	        echo -e "${wlans[i]}"
 	done
 	echo -e "--------------"
-	echo
-	echo -e $RED" ------------------------------------------------------------------------"
-	echo -e "| Y O U   C A N N O T   A D D    A N   A L R E A D Y    E X I S T I N G  |"
-	echo -e "| A D A P T E R   T O   T H E   C O N F I G U R A T I O N   F I L E      |"
-	echo -e " ------------------------------------------------------------------------"
-	
-	go=$true
-	while [$go -eq $true];
-	do
-		echo -e $YELLOW"If you see the interface '$wlan' in the list, type 'y' and press [ENTER]. "
-		echo -e $YELLOW"Otherwise, type 'n' and press [ENTER]: " $CYAN
-		read cannotAdd
-
-		case $cannotAdd in
-
-			'y' | 'Y')
-				clear_wifi
-				break
-				;;
-
-			'n' | 'N')
-				echo -e $GREEN"OK, we are ready to add it to the configuration!  :)"
-				erase=2
-				break
-				;;
-
-			*)
-				echo -e $RED"YOU HAVE TO CONFIRM THAT THE INTERFACE IS NOT ALREADY CONFIGURED!"
-				echo -e "Choice is not valid.  Type 'y' or 'n'."
-				;;
-		esac
-	done
 }
 
-function clear_wifi()
-{
-	title
-
-	go=$true
-	while [$go -eq $true];
-	do
-		echo
-		echo -e $RED"Cannot add the same adapter twice.  You can:"
-		echo -e "[c] - Clear the Configuration file"
-		echo -e "[e] - Edit the Configuration file"
-		echo -e "[b] - Go Back to Change Network Menu"
-		echo -e "[q] - Quit to Main Menu"
-		echo -e $YELLOW"Type your choice and press [ENTER]: "$CYAN
-		read choice
-
-		case $choice in
-
-			'b' | 'B')
-				echo
-				echo -e $YELLOW"Going back to Previous Menu..."
-				options
-				;;
-
-			'c' | 'C')
-				erase=1
-				echo
-				echo -e $YELLOW"Clearing previous Configuration File..."
-				break
-				;;
-
-			'e' | 'E')
-				echo
-				echo -e $YELLOW"Going back to Previous Menu, select Option [3]."
-				options
-				;;
-
-			'q' | 'Q')
-				echo
-				echo -e $YELLOW"Quit to Main Menu..."
-				cd $SCRIPTPATH
-				sudo ./juicer.sh
-				;;
-
-			'')
-				echo -e $RED"You must provide a choice!"
-				;;
-
-			*)
-				echo -e $RED"Choice is not valid.  Type one of the letter in brackets ( [] )"
-				;;
-
-		esac
-	done
-}
-
-########################### Clear & Write File ###########################
-function write_wifi_clear()
+########################### Write File ###########################
+function write_wifi()
 {
 	echo "# Network Configuration by Juicer for Orange Pi" > interfaces
 	echo "auto lo" >> interfaces
@@ -477,30 +370,6 @@ function write_wifi_clear()
 	echo "" >> interfaces
 	echo "auto eth0" >> interfaces
 	echo "iface eth0 inet dhcp" >> interfaces
-	echo "" >> interfaces
-	echo "auto $wlan" >> interfaces
-	echo "iface $wlan inet $mode" >> interfaces
-
-	if [ "$mode" == "static" ]
-	then 
-		echo "	address $address" >> interfaces
-		echo "	netmask $netmask" >> interfaces
-		echo "	gateway $gateway" >> interfaces
-		echo "	dns-nameservers $dns" >> interfaces
-		echo "	broadcast $broadcast" >> interfaces
-		echo "	network $network" >> interfaces
-		echo "	wpa-ssid $wifi" >> interfaces
-		echo "	wpa-psk $pass" >> interfaces
-	fi
-
-	sudo mv interfaces /etc/network/
-}
-
-########################### Add to File ###########################
-function add_wifi_write()
-{
-	sudo cp /etc/network/interfaces interfaces
-
 	echo "" >> interfaces
 	echo "auto $wlan" >> interfaces
 	echo "iface $wlan inet $mode" >> interfaces
