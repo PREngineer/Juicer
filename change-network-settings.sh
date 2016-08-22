@@ -347,6 +347,7 @@ function add_wifi()
 	fi
 	########################### Just Add to File ###########################
 	if [$erase -eq 2]
+	then
 		add_wifi_write
 		echo "NOT ERASE!"
 	fi
