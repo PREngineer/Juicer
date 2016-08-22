@@ -358,27 +358,32 @@ function validate_wifi()
 	echo -e "| Y O U   C A N N O T   A D D    A N   A L R E A D Y    E X I S T I N G  |"
 	echo -e "| A D A P T E R   T O   T H E   C O N F I G U R A T I O N   F I L E      |"
 	echo -e " ------------------------------------------------------------------------"
-	echo -e $YELLOW"If you see the interface '$wlan' in the list, type 'y' and press [ENTER]. "
-	echo -e $YELLOW"Otherwise, type 'n' and press [ENTER]: " $CYAN
-	read cannotAdd
+	
+	go=$true
+	while [$go -eq $true];
+	do
+		echo -e $YELLOW"If you see the interface '$wlan' in the list, type 'y' and press [ENTER]. "
+		echo -e $YELLOW"Otherwise, type 'n' and press [ENTER]: " $CYAN
+		read cannotAdd
 
-	case $cannotAdd in
+		case $cannotAdd in
 
-		'y' | 'Y')
-			clear_wifi
-			;;
+			'y' | 'Y')
+				clear_wifi
+				;;
 
-		'n' | 'N')
-			echo -e $GREEN"OK, we are ready to add it to the configuration!  :)"
-			add=$true
-			;;
+			'n' | 'N')
+				echo -e $GREEN"OK, we are ready to add it to the configuration!  :)"
+				add=$true
+				break
+				;;
 
-		*)
-			echo -e $RED"YOU HAVE TO CONFIRM THAT THE INTERFACE IS NOT ALREADY CONFIGURED!"
-			echo -e "Choice is not valid.  Type 'y' or 'n'."
-			validate_wifi
-			;;
-	esac
+			*)
+				echo -e $RED"YOU HAVE TO CONFIRM THAT THE INTERFACE IS NOT ALREADY CONFIGURED!"
+				echo -e "Choice is not valid.  Type 'y' or 'n'."
+				;;
+		esac
+	done
 }
 
 function clear_wifi()
