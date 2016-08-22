@@ -104,6 +104,277 @@ function options()
 	esac
 }
 
+function add_lan()
+{
+	display_lan
+
+	########################### Prompt for LAN & MODE ###########################
+	go=$true
+	while [$go -eq $true];
+	do
+		echo
+		echo -e $BLACK"Which LAN Adapter do you want to configure? [ethX] : "$CYAN
+		read eth
+
+		case $eth in
+
+			'')
+		        echo -e $RED"Please provide a value!"
+				;;
+
+		    *)
+		       	echo -e $BLACK"Got it!  We will be modifying Interface '$eth'."
+		       	break
+		       	;;
+		esac
+	done
+
+	# Check that the changes can be applied
+	validate
+
+	title
+	go=$true
+	while [$go -eq $true];
+	do
+		echo -e $BLACK"Do you want to set up a 'static' or 'dhcp' configuration : "$CYAN
+		read mode
+
+		case $mode in
+
+			'static' | 'dhcp')
+				break
+				;;
+
+			'')
+		        echo -e $RED"Please provide a value!"
+				;;
+
+		    *)
+		       	echo -e $BLACK"Invalid option!  Options are 'static' or 'dhcp'."
+		       	;;
+		esac
+	done
+
+	########################### Prompt for IP Address ###########################
+	title
+	echo -e $YELLOW"--------------------------------------------------------"
+	echo -e "An IP Address is the UNIQUE identifier of your device in"
+	echo -e "your Network.  It usually is:"
+	echo -e "                      192.168.0.x"
+	echo -e "                           OR"
+	echo -e "                      10.0.0.x"
+	echo -e "--------------------------------------------------------"
+	echo -e $RED"MAKE SURE TO USE AN IP THAT IS NOT ALREADY BEING USED!!"
+	echo -e "      USUALLY, IT CANNOT END WITH '.0' or '.255'!!"$YELLOW
+	echo -e "--------------------------------------------------------"
+	echo -e "-- Checking your IP in WINDOWS --"
+	echo -e "You can view your local range in a Windows PC by opening"
+	echo -e "Command Prompt and typing : 'ipconfig /all'.  Your "
+	echo -e "current Connection should be listed and you can view "
+	echo -e "your Windows PC's adapter IP."
+	echo -e "--------------------------------------------------------"
+	echo -e "-- Checking your IP in LINUX/MAC OS X --"
+	echo -e "You can view your local range in a Linux or Mac OS X PC"
+	echo -e "by opening a Terminal and typing 'ifconfig'.  Your"
+	echo -e "current Connection should be listed and you can view"
+	echo -e "your Linux/Mac PC's adapter IP."
+	echo -e "--------------------------------------------------------"
+	echo
+	echo -e $BLACK"Enter the desired IP Address : "$CYAN
+	read address
+
+	########################### Prompt for Network ###########################
+	title
+	echo -e $YELLOW"--------------------------------------------------------"
+	echo -e "Your computer or device is connected to a specific network.  It"
+	echo -e "usually is just like your IP but ends with '.0':"
+	echo -e "                      192.168.0.0"
+	echo -e "                           OR"
+	echo -e "                      10.0.0.0"
+	echo -e "--------------------------------------------------------"
+	echo -e $RED"MAKE SURE TO PUT THE RIGHT NETWORK!!"$YELLOW
+	echo -e "--------------------------------------------------------"
+	echo -e "-- Checking your NETWORK in WINDOWS --"
+	echo -e "You can view your local range in a Windows PC by opening"
+	echo -e "Command Prompt and typing : 'ipconfig /all'.  Your "
+	echo -e "current Connection should be listed and you can view "
+	echo -e "your Windows PC's adapter IP."
+	echo -e "--------------------------------------------------------"
+	echo -e "-- Checking your NETWORK in LINUX/MAC OS X --"
+	echo -e "You can view your local range in a Linux or Mac OS X PC"
+	echo -e "by opening a Terminal and typing 'ifconfig'.  Your"
+	echo -e "current Connection should be listed and you can view"
+	echo -e "your Linux/Mac PC's adapter IP."
+	echo -e "--------------------------------------------------------"
+	echo
+	echo -e $BLACK"Enter the Network Address : "$CYAN
+	read network
+
+	########################### Prompt for Broadcast ###########################
+	title
+	echo -e $YELLOW"--------------------------------------------------------"
+	echo -e "Your network has a special IP that is used to establish"
+	echo -e "connectivity with new devices.  It is usually like your"
+	echo -e "IP but ends with '.255':"
+	echo -e "                      192.168.0.255"
+	echo -e "                           OR"
+	echo -e "                      10.0.0.255"
+	echo -e "--------------------------------------------------------"
+	echo -e $RED"MAKE SURE TO PUT THE RIGHT BROADCAST ADDRESS!!"$YELLOW
+	echo -e "--------------------------------------------------------"
+	echo -e "-- Checking your BROADCAST in WINDOWS --"
+	echo -e "You can view your local range in a Windows PC by opening"
+	echo -e "Command Prompt and typing : 'ipconfig /all'.  Your "
+	echo -e "current Connection should be listed and you can view "
+	echo -e "your Network Broadcast IP."
+	echo -e "--------------------------------------------------------"
+	echo -e "-- Checking your BROADCAST in LINUX/MAC OS X --"
+	echo -e "You can view your local range in a Linux or Mac OS X PC"
+	echo -e "by opening a Terminal and typing 'ifconfig'.  Your"
+	echo -e "current Connection should be listed and you can view"
+	echo -e "your Network Broadcast IP."
+	echo -e "--------------------------------------------------------"
+	echo
+	echo -e $BLACK"Enter the Broadcast IP Address : "$CYAN
+	read broadcast
+
+	########################### Prompt for Mask ###########################
+	title
+	echo -e $YELLOW"--------------------------------------------------------"
+	echo -e "A Network Mask defines how many computers/devices are allowed"
+	echo -e "within your Network.  It usually is:"
+	echo -e "                      255.255.255.0"
+	echo -e "which represents 254 computers/devices."
+	echo -e "--------------------------------------------------------"
+	echo -e $RED"MAKE SURE TO USE THE ONE SPECIFIED FOR YOUR NETWORK!"$YELLOW
+	echo -e "--------------------------------------------------------"
+	echo -e "-- Checking your MASK in WINDOWS --"
+	echo -e "You can view your local MASK in a Windows PC by opening"
+	echo -e "Command Prompt and typing : 'ipconfig /all'.  Your "
+	echo -e "current Connection should be listed and you can view "
+	echo -e "your Network's mask."
+	echo -e "--------------------------------------------------------"
+	echo -e "-- Checking your MASK in LINUX/MAC OS X --"
+	echo -e "You can view your local MASK in a Linux or Mac OS X PC"
+	echo -e "by opening a Terminal and typing 'ifconfig'.  Your"
+	echo -e "current Connection should be listed and you can view"
+	echo -e "your Network's mask."
+	echo -e "--------------------------------------------------------"
+	echo
+	echo -e $BLACK"Enter the desired Network Mask : "$CYAN
+	read netmask
+
+	########################### Prompt for Gateway ###########################
+	title
+	echo -e $YELLOW"--------------------------------------------------------"
+	echo -e "Your network has a device named Router/Gateway.  This"
+	echo -e "device is in charge of transferring your data from/to"
+	echo -e "the outside world (Internet).  It usually is like"
+	echo -e "your IP Address but ends with '.1' like so:"
+	echo -e "                      192.168.0.1"
+	echo -e "                           OR"
+	echo -e "                      10.0.0.1"
+	echo -e "--------------------------------------------------------"
+	echo -e $RED"MAKE SURE TO USE THE ONE SPECIFIED FOR YOUR NETWORK!"$YELLOW
+	echo -e "--------------------------------------------------------"
+	echo -e "-- Checking your MASK in WINDOWS --"
+	echo -e "You can view your local MASK in a Windows PC by opening"
+	echo -e "Command Prompt and typing : 'ipconfig /all'.  Your "
+	echo -e "current Connection should be listed and you can view "
+	echo -e "your Network's mask."
+	echo -e "--------------------------------------------------------"
+	echo -e "-- Checking your MASK in LINUX/MAC OS X --"
+	echo -e "You can view your local MASK in a Linux or Mac OS X PC"
+	echo -e "by opening a Terminal and typing 'ifconfig'.  Your"
+	echo -e "current Connection should be listed and you can view"
+	echo -e "your Network's mask."
+	echo -e "--------------------------------------------------------"
+	echo
+	echo -e $BLACK"Enter the desired Gateway : "$CYAN
+	read gateway
+
+	########################### Prompt for DNS ###########################
+	title
+	echo -e $YELLOW"--------------------------------------------------------"
+	echo -e "Your network doesn't know all of the internet.  It needs"
+	echo -e "an outsider to tell it where to resolve a domain name"
+	echo -e "like 'google.com' into an actual IP Address.  This is a"
+	echo -e "DNS Server.  You can use multiple DNS Servers.  Just"
+	echo -e "separate each one with a space.  You can use public DNS"
+	echo -e "servers like Google or Open DNS, or your ISP's.  Like: "
+	echo -e " Google:          '8.8.8.8 8.8.4.4'"
+	echo -e " OpenDNS: '208.67.222.222 208.67.220.220'"
+	echo -e " Mixed:  '208.67.222.222 8.8.8.8 8.8.4.4 208.67.220.220'"
+	echo -e "--------------------------------------------------------"
+	echo -e $RED"MAKE SURE TO USE VALID ADDRESSES!"$YELLOW
+	echo -e "--------------------------------------------------------"
+	echo -e "-- Figuring Out Your DNS --"
+	echo -e "A quick google search will give you your ISP's DNS or"
+	echo -e "you can just call them and ask for it."
+	echo -e "The Samples for Google and OpenDNS are accurate as of"
+	echo -e "the creation of this tool.  Aug/21/2016"
+	echo -e "--------------------------------------------------------"
+	echo
+	echo -e $BLACK"Enter the desired DNS Servers : "$CYAN
+	read dns
+
+	write_lan
+}
+
+########################### Show WiFi Adapters ###########################
+function display_lan()
+{
+	title
+
+	echo 
+	echo -e $YELLOW'--->Retrieving Available LAN Adapter Details...'$BLACK
+	echo 
+
+	ifconfig -a | grep 'eth' | awk '{print $5}' > macs
+
+	ifconfig -a | grep 'eth' | awk '{print $1}' > names
+
+	mapfile -t macs < macs
+
+	mapfile -t names < names
+
+	echo -e "---------------------------------"
+	echo -e "Name \t MAC"
+	echo -e "---------------------------------"
+
+	for((i=0; i < ${#names[@]}; i++));
+	do
+	        echo -e "${names[i]} \t ${macs[i]}"
+	done
+	
+	echo -e "---------------------------------"
+	rm macs names
+}
+
+########################### Write LAN To File ###########################
+function write_lan()
+{
+	echo "# Network Configuration by Juicer for Orange Pi" > interfaces
+	echo "auto lo" >> interfaces
+	echo "iface lo inet loopback" >> interfaces
+	echo "" >> interfaces
+	echo "auto $eth" >> interfaces
+	echo "iface $eth inet $mode" >> interfaces
+	
+	if [ "$mode" == "static" ]
+	then 
+		echo "	address $address" >> interfaces
+		echo "	netmask $netmask" >> interfaces
+		echo "	gateway $gateway" >> interfaces
+		echo "	dns-nameservers $dns" >> interfaces
+		echo "	broadcast $broadcast" >> interfaces
+		echo "	network $network" >> interfaces
+	fi
+
+	sudo mv interfaces /etc/network/
+}
+
+########################### Create the WiFi Connection ###########################
 function add_wifi()
 {
 	display_wifi
@@ -130,7 +401,7 @@ function add_wifi()
 	done
 
 	# Check that the changes can be applied
-	validate_wifi
+	validate
 
 	title
 	go=$true
@@ -330,7 +601,7 @@ function add_wifi()
 	echo -e $BLACK"Enter the Wireless Network Password [Passphrase] : "$CYAN
 	read pass
 	
-	########################### Clear File ###########################
+	########################### Write To File ###########################
 	
 	title
 	go=$true
@@ -360,11 +631,9 @@ function add_wifi()
 		       	;;
 		esac
 	done
-
-	write_wifi
 }
 
-function validate_wifi()
+function validate()
 {
 	########################### Retrieved configured devices ###########################
 	ifconfig -a | grep 'eth' | awk '{print $1}' > eth
