@@ -322,6 +322,10 @@ function add_lan()
 	fi
 	
 	write_lan
+
+	echo -e $YELLOW'--->Restarting Ethernet Network Adapter...'$BLACK
+	sudo ifdown $eth
+	sudo ifup $eth
 }
 
 ########################### Show WiFi Adapters ###########################
@@ -637,6 +641,10 @@ function add_wifi()
 		       	;;
 		esac
 	done
+
+	echo -e $YELLOW'--->Restarting Wireless Network Adapter...'$BLACK
+	sudo ifdown $wlan
+	sudo ifup $wlan
 }
 
 function validate()
@@ -805,8 +813,6 @@ options
 
 echo 
 echo -e $YELLOW'--->Restarting Network Services...'$BLACK
-#sudo ifdown $wlan
-#sudo ifup $wlan
 sudo /etc/init.d/networking restart
 echo
 echo -e $GREEN'--->All done. '$BLACK
