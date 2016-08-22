@@ -391,6 +391,7 @@ function validate_wifi()
 
 			'y' | 'Y')
 				clear_wifi
+				add=$false
 				break
 				;;
 
