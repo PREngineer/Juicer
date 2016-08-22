@@ -452,7 +452,7 @@ function display_wifi()
 	title
 
 	echo 
-	echo -e $YELLOW'--->Retrieving WiFi Adapter Details...'$BLACK
+	echo -e $YELLOW'--->Retrieving Available WiFi Adapter Details...'$BLACK
 	echo 
 
 	cat /etc/udev/rules.d/70-persistent-net.rules | grep '{address}' > test
@@ -476,11 +476,6 @@ function display_wifi()
 	
 	echo -e "---------------------------------"
 	rm macs names test
-
-	echo
-	pause 'Press [Enter] to go back to the Check Network Menu'
-	options
-	echo
 }
 
 function change_dns()
