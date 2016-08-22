@@ -340,7 +340,7 @@ function add_wifi()
 	read pass
 	
 	########################### Clear File ###########################
-	if [[$erase -eq $true]]
+	if [$erase -eq $true]
 	then 
 		write_wifi_clear
 		echo "ERASE!"
