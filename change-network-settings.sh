@@ -477,7 +477,7 @@ function write_wifi_clear()
 	echo "auto $wlan\n" >> interfaces
 	echo "iface $wlan inet $mode\n" >> interfaces
 
-	if [ "$mode" -eq "static" ]
+	if [ "$mode" == "static" ]
 	then 
 		echo "	address $address\n" >> interfaces
 		echo "	netmask $netmask\n" >> interfaces
@@ -501,7 +501,7 @@ function add_wifi_write()
 	echo "auto $wlan\n" >> interfaces
 	echo "iface $wlan inet $mode\n" >> interfaces
 
-	if [ "$mode" -eq "static" ]
+	if [ "$mode" == "static" ]
 	then 
 		echo "	address $address\n" >> interfaces
 		echo "	netmask $netmask\n" >> interfaces
