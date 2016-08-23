@@ -60,19 +60,20 @@ echo -e '-----------------------------------------------------------------------
 echo -e $BLACK'AVAILABLE\t'$CYAN'NOT AVAILABLE YET'
 echo -e '-----------------------------------------------------------------------------------------------------------'
 echo -e $YELLOW'@---@---@---@---@---@--- UPDATE ---@---@---@---@---@---@'
-echo -e $YELLOW'[00] '$BLACK'Update Juicer for Orange Pi'
+echo -e $YELLOW'[00] '$BLACK'Update Juicer for Orange Pis'
+echo -e $YELLOW'[01] '$BLACK'Uninstall Juicer for Orange Pis'
 echo
 echo -e $YELLOW'@---@---@---@---@---@--- NETWORK ---@---@---@---@---@---@'
-echo -e $YELLOW'[01] '$BLACK'Check Network Settings'
-echo -e $YELLOW'[02] '$BLACK'Change Network Settings'
+echo -e $YELLOW'[02] '$BLACK'Check Network Settings'
+echo -e $YELLOW'[03] '$BLACK'Change Network Settings'
 echo
 echo -e $YELLOW'@---@---@---@---@---@--- DEVICES & PARTITIONS ---@---@---@---@---@---@'
-echo -e $YELLOW'[03] '$CYAN'Manage Devices'
-echo -e $YELLOW'[04] '$CYAN'Manage Partitions'
+echo -e $YELLOW'[04] '$CYAN'Manage Devices'
+echo -e $YELLOW'[05] '$CYAN'Manage Partitions'
 echo
 echo -e $YELLOW'@---@---@---@---@---@--- NETWORK STORAGE---@---@---@---@---@---@'
-echo -e $YELLOW'[05] '$CYAN'Manage File Shares'
-echo -e $YELLOW'[06] '$CYAN'Manage Mount Points'
+echo -e $YELLOW'[06] '$CYAN'Manage File Shares'
+echo -e $YELLOW'[07] '$CYAN'Manage Mount Points'
 echo
 echo -e $YELLOW'@---@---@---@---@---@--- SERVERS/SERVICES ---@---@---@---@---@---@'
 echo -e $YELLOW'[] '$CYAN'Web Server 		[Host your own webpages]'
@@ -128,15 +129,19 @@ case $option in
 		;;
 
 	1 | 01)
+        sudo ./uninstall.sh
+        ;;
+
+	2 | 02)
         sudo ./check-network-settings.sh
         ;;
 
-    2 | 02)
+    3 | 03)
         sudo ./change-network-settings.sh
         ;;
 
     98)
-        sudo ./installer.sh
+        sudo reboot now
         ;;
 
     99)
