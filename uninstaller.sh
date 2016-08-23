@@ -48,7 +48,7 @@ case $option in
 		echo -e $YELLOW"-->Uninstalling Juicer for Orange Pis..."
 		echo
 
-		if [ ! -f /etc/profile.d/Juicer.sh]
+		if [ ! -e "/etc/profile.d/Juicer.sh" ]
 		then
 			echo -e $RED"Juicer for Orange Pis has already been uninstalled!"$BLACK
 		else
