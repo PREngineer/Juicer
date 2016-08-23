@@ -947,11 +947,16 @@ function change_dns()
 ########################### Disable WiFi Power Management ###########################
 function disable_pwr_management()
 {
-	if[-n /etc/pm/power.d]
+	if [ -n /etc/pm/power.d ]
 	then
+		echo "#!/bin/sh" > wifi_pwr_off
+		echo "/sbin/iwconfig wlan0 power off" >> wifi_pwr_off
 
+		sudo chmod +x wifi_pwr_off
+
+		sudo mv wifi_pwr_off /etc/pm/power.d/
 	else
-		echo -e $BLACK"Power Management is already Disabled!"
+		echo -e $RED"Power Management is already Disabled!"
 	fi
 }
 

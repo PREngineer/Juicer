@@ -104,9 +104,9 @@ echo
 echo -e $YELLOW'@---@---@---@---@---@--- GAMES ---@---@---@---@---@---@'
 echo -e $YELLOW'[] '$CYAN'Minecraft Server	[Host your own Minecraft]'
 echo
-echo -e $YELLOW'@---@---@---@---@---@--- EXIT ---@---@---@---@---@---@'
+echo -e $YELLOW'@---@---@---@---@---@--- QUIT ---@---@---@---@---@---@'
 echo -e $YELLOW'[98] '$CYAN'Restart Orange Pi [Sometimes necessary after changes]'
-echo -e $YELLOW'[99] '$BLACK'Exit'
+echo -e $YELLOW'[99] '$BLACK'Quit'
 
 echo
 echo -n "Choose your action [00-99]: "
@@ -140,7 +140,7 @@ case $option in
         ;;
 
     99)
-        #exit 0
+        exit 0
         ;;
 
     *)
