@@ -952,6 +952,10 @@ function change_dns()
 ########################### Disable WiFi Power Management ###########################
 function disable_pwr_management()
 {
+	echo
+	echo -e $YELLOW'--> Disabling WiFi Power Management...'
+	echo
+
 	ifconfig -a | grep 'wlan' | awk '{print $1}' > names
 
 	mapfile -t names < names
@@ -966,19 +970,47 @@ function disable_pwr_management()
 		sudo chmod +x wifi_pwr_off
 
 		sudo mv wifi_pwr_off /etc/pm/power.d/
+
+		echo
+		echo -e $RED"WiFi Power Management has been Disabled!"$BLACK
+		echo
+
+		pause 'Press [Enter] to continue...'
+		options
 	else
-		echo -e $RED"WiFi Power Management is already Disabled!"
+		echo
+		echo -e $RED"WiFi Power Management is already Disabled!"$BLACK
+		echo
+		
+		pause 'Press [Enter] to continue...'
+		options
 	fi
 }
 
 ########################### Enable WiFi Power Management ###########################
 function enable_pwr_management()
 {
+	echo
+	echo -e $YELLOW'--> Enabling WiFi Power Management...'
+	echo
+
 	if [ -e "/etc/pm/power.d/wifi_pwr_off" ]
 	then		
 		rm /etc/pm/power.d/wifi_pwr_off
+
+		echo
+		echo -e $RED"WiFi Power Management has been Enabled!"$BLACK
+		echo
+
+		pause 'Press [Enter] to continue...'
+		options
 	else
-		echo -e $RED"WiFi Power Management is already Enabled!"
+		echo
+		echo -e $RED"WiFi Power Management is already Enabled!"$BLACK
+		echo
+
+		pause 'Press [Enter] to continue...'
+		options
 	fi
 }
 
