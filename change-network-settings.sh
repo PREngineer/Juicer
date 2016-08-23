@@ -962,6 +962,12 @@ function disable_pwr_management()
 
 	rm names
 
+	if [ ! -d "/etc/pm/power.d" ]
+	then
+		sudo mkdir /etc/pm
+		sudo mkdir /etc/pm/power.d
+	fi
+
 	if [ ! -e "/etc/pm/power.d/wifi_pwr_off" ]
 	then
 		echo "#!/bin/sh" > wifi_pwr_off
