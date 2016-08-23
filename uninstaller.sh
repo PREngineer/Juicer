@@ -53,6 +53,7 @@ case $option in
 			echo -e $RED"Juicer for Orange Pis has already been uninstalled!"$BLACK
 		else
 			sudo rm /etc/profile.d/Juicer.sh
+			echo -e $GREEN"Done!"
 			echo
 			echo "A Reboot is necessary to apply the changes."
 			echo

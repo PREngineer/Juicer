@@ -73,6 +73,7 @@ function options()
 	echo -e $RED'\t- This option will remove WiFi.'$YELLOW
 	echo -e $YELLOW'[05] '$BLACK'Add/Modify - Primary DNS Configuration'
 	echo -e $YELLOW'[06] '$BLACK"Disable - WiFi Power Management [Never Off]"
+	echo -e $YELLOW'[07] '$BLACK"Enable - WiFi Power Management  [Turns Off]"
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
 	echo -e $YELLOW'[99] '$BLACK'Go back to Main Menu'
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
@@ -105,6 +106,10 @@ function options()
 
 	    6 | 06)
 	        disable_pwr_management
+	        ;;
+
+	    7 | 07)
+	        enable_pwr_management
 	        ;;
 
 	    99 | 99)
@@ -947,16 +952,33 @@ function change_dns()
 ########################### Disable WiFi Power Management ###########################
 function disable_pwr_management()
 {
-	if [ -n /etc/pm/power.d ]
+	ifconfig -a | grep 'wlan' | awk '{print $1}' > names
+
+	mapfile -t names < names
+
+	rm names
+
+	if [ ! -e "/etc/pm/power.d/wifi_pwr_off" ]
 	then
 		echo "#!/bin/sh" > wifi_pwr_off
-		echo "/sbin/iwconfig wlan0 power off" >> wifi_pwr_off
+		echo "/sbin/iwconfig ${names[0]} power off" >> wifi_pwr_off
 
 		sudo chmod +x wifi_pwr_off
 
 		sudo mv wifi_pwr_off /etc/pm/power.d/
 	else
-		echo -e $RED"Power Management is already Disabled!"
+		echo -e $RED"WiFi Power Management is already Disabled!"
+	fi
+}
+
+########################### Enable WiFi Power Management ###########################
+function enable_pwr_management()
+{
+	if [ -e "/etc/pm/power.d/wifi_pwr_off" ]
+	then		
+		rm /etc/pm/power.d/wifi_pwr_off
+	else
+		echo -e $RED"WiFi Power Management is already Enabled!"
 	fi
 }
 
