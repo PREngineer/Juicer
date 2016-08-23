@@ -124,6 +124,7 @@ case $option in
 		pause 'Press [Enter] to restart and continue...'
 		cd $SCRIPTPATH
 		sudo ./juicer.sh
+		exit 0
 		;;
 
 	1 | 01)
@@ -135,7 +136,7 @@ case $option in
         ;;
 
     98)
-        sudo reboot now
+        sudo ./installer.sh
         ;;
 
     99)

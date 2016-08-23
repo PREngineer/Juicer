@@ -51,9 +51,7 @@ echo -e 'Starting Juicer...'
 
 cd $SCRIPTPATH
 
-sudo ./juicer.sh
-
-exit 0" > Juicer.sh
+sudo ./juicer.sh" > Juicer.sh
 
 sudo chmod ugo+x Juicer.sh
 
