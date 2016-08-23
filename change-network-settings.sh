@@ -981,15 +981,15 @@ function disable_pwr_management()
 		echo -e $RED"WiFi Power Management has been Disabled!"$BLACK
 		echo
 
-		pause 'Press [Enter] to continue...'
-		options
+		pause 'Press [Enter] to Restart...'
+		sudo reboot now
 	else
 		echo
 		echo -e $RED"WiFi Power Management is already Disabled!"$BLACK
 		echo
 		
 		pause 'Press [Enter] to Restart...'
-		sudo reboot now
+		options
 	fi
 }
 
@@ -1008,15 +1008,15 @@ function enable_pwr_management()
 		echo -e $RED"WiFi Power Management has been Enabled!"$BLACK
 		echo
 
-		pause 'Press [Enter] to continue...'
-		options
+		pause 'Press [Enter] to Restart...'
+		sudo reboot now
 	else
 		echo
 		echo -e $RED"WiFi Power Management is already Enabled!"$BLACK
 		echo
 
-		pause 'Press [Enter] to Restart...'
-		sudo reboot now
+		pause 'Press [Enter] to continue...'
+		options
 	fi
 }
 
