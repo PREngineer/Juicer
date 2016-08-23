@@ -5,6 +5,11 @@
 # License: Personal Use (1 device)
 ###########################################################
 
+function pause()
+{
+   read -p "$*"
+}
+
 # Color definition variables
 YELLOW='\e[33;3m'
 RED='\e[91m'
@@ -43,7 +48,7 @@ case $option in
 		echo -e $YELLOW"-->Uninstalling Juicer for Orange Pis..."
 		echo
 
-		if [-n /etc/profile.d/Juicer.sh]
+		if [ ! -f /etc/profile.d/Juicer.sh]
 		then
 			echo -e $RED"Juicer for Orange Pis has already been uninstalled!"$BLACK
 		else
