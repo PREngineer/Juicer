@@ -140,7 +140,7 @@ case $option in
         ;;
 
     99)
-        exit 0
+        #exit 0
         ;;
 
     *)

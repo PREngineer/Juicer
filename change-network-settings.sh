@@ -72,6 +72,7 @@ function options()
 	echo -e $YELLOW'[04] '$BLACK'Add/Modify - Ethernet Configuration[DHCP]'
 	echo -e $RED'\t- This option will remove WiFi.'$YELLOW
 	echo -e $YELLOW'[05] '$BLACK'Add/Modify - Primary DNS Configuration'
+	echo -e $YELLOW'[06] '$BLACK"Disable - WiFi Power Management [Never Off]"
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
 	echo -e $YELLOW'[99] '$BLACK'Go back to Main Menu'
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
@@ -100,6 +101,10 @@ function options()
 
 	  	5 | 05)
 	        change_dns
+	        ;;
+
+	    6 | 06)
+	        disable_pwr_management
 	        ;;
 
 	    99 | 99)
@@ -902,6 +907,7 @@ function display_wifi()
 	rm macs names test
 }
 
+########################### Change Primary DNS ###########################
 function change_dns()
 {
 	########################### Prompt for IP Address ###########################
@@ -937,6 +943,18 @@ function change_dns()
 
 	sudo mv resolv.conf /etc/
 }
+
+########################### Disable WiFi Power Management ###########################
+function disable_pwr_management()
+{
+	if[-n /etc/pm/power.d]
+	then
+
+	else
+		echo -e $BLACK"Power Management is already Disabled!"
+	fi
+}
+
 ########################### START EXECUTION ###########################
 
 options
