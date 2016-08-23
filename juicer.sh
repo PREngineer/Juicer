@@ -129,7 +129,7 @@ case $option in
 		;;
 
 	1 | 01)
-        sudo ./uninstall.sh
+        sudo ./uninstaller.sh
         ;;
 
 	2 | 02)
