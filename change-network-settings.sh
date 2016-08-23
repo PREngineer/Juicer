@@ -988,7 +988,7 @@ function disable_pwr_management()
 		echo -e $RED"WiFi Power Management is already Disabled!"$BLACK
 		echo
 		
-		pause 'Press [Enter] to Restart...'
+		pause 'Press [Enter] to Continue...'
 		options
 	fi
 }
