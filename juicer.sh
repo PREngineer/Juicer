@@ -124,7 +124,6 @@ case $option in
 		pause 'Press [Enter] to restart and continue...'
 		cd $SCRIPTPATH
 		sudo ./juicer.sh
-		exit 0
 		;;
 
 	1 | 01)
