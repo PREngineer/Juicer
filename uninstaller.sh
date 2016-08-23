@@ -67,3 +67,4 @@ case $option in
 		echo -e $RED"Invalid Option.  Try again!"
 		sudo ./uninstaller.sh
 		;;
+esac
