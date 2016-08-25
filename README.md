@@ -19,3 +19,10 @@ Currently used to manage:
 # IMPORTANT!
 
 Please read the juicer.sh script for licensing details.
+
+# Please Support This Project!
+
+This project is being developed during my spare time.  I find it to be very useful for people that are starting to use their Pis and have little to no previous experience with Ubuntu/Debian Servers.  I would appreciate a donation.
+
+
+[![Donate](https://www.paypal.com/en_US/i/scr/pixel.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WNQLLY89JSPBN)
