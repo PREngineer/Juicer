@@ -62,18 +62,19 @@ echo -e '-----------------------------------------------------------------------
 echo -e $YELLOW'@---@---@---@---@---@--- UPDATE ---@---@---@---@---@---@'
 echo -e $YELLOW'[00] '$BLACK'Update Juicer for Orange Pis'
 echo -e $YELLOW'[01] '$BLACK'Uninstall Juicer for Orange Pis'
+echo -e $YELLOW'[02] '$BLACK'Update System'
 echo
 echo -e $YELLOW'@---@---@---@---@---@--- NETWORK ---@---@---@---@---@---@'
-echo -e $YELLOW'[02] '$BLACK'Check Network Settings'
-echo -e $YELLOW'[03] '$BLACK'Change Network Settings'
+echo -e $YELLOW'[03] '$BLACK'Check Network Settings'
+echo -e $YELLOW'[04] '$BLACK'Change Network Settings'
 echo
 echo -e $YELLOW'@---@---@---@---@---@--- DEVICES & PARTITIONS ---@---@---@---@---@---@'
-echo -e $YELLOW'[04] '$CYAN'Manage Devices'
-echo -e $YELLOW'[05] '$CYAN'Manage Partitions'
+echo -e $YELLOW'[05] '$CYAN'Manage Devices'
+echo -e $YELLOW'[06] '$CYAN'Manage Partitions'
 echo
 echo -e $YELLOW'@---@---@---@---@---@--- NETWORK STORAGE---@---@---@---@---@---@'
-echo -e $YELLOW'[06] '$CYAN'Manage File Shares'
-echo -e $YELLOW'[07] '$CYAN'Manage Mount Points'
+echo -e $YELLOW'[07] '$CYAN'Manage File Shares'
+echo -e $YELLOW'[08] '$CYAN'Manage Mount Points'
 echo
 echo -e $YELLOW'@---@---@---@---@---@--- SERVERS/SERVICES ---@---@---@---@---@---@'
 echo -e $YELLOW'[] '$CYAN'Web Server 		[Host your own webpages]'
@@ -129,26 +130,36 @@ case $option in
 		;;
 
 	1 | 01)
-        sudo ./uninstaller.sh
-        ;;
+    sudo ./uninstaller.sh
+    ;;
 
 	2 | 02)
-        sudo ./check-network-settings.sh
-        ;;
+    echo -e $YELLOW'--->Updating Operating System Data...'$BLACK
+    sudo apt-get update -y
+    echo -e $YELLOW'--->Upgrading Operating System...'$BLACK
+    sudo apt-get upgrade -y
+    ;;
+  3 | 03)
+    sudo ./check-network-settings.sh
+    ;;
 
-    3 | 03)
-        sudo ./change-network-settings.sh
-        ;;
+  4 | 04)
+    sudo ./change-network-settings.sh
+    ;;
 
-    98)
-        sudo reboot now
-        ;;
+  5 | 05)
+    sudo ./manage-devices.sh
+    ;;
 
-    99)
-        exit 0
-        ;;
+  98)
+    sudo reboot now
+    ;;
 
-    *)
+  99)
+    exit 0
+    ;;
+
+  *)
        	echo -e $RED'Invalid Option'$BLACK
 		ScriptLoc=$(readlink -f "$0")
 		sleep 1

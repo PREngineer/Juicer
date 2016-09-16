@@ -808,6 +808,7 @@ function write_wep_static()
 	
 	echo "	wireless-essid $wifi" >> interfaces
 	echo "	wireless-key $pass" >> interfaces
+	echo "  wireless-power off" >> interfaces
 	
 
 	sudo mv interfaces /etc/network/
@@ -838,6 +839,7 @@ function write_wpa2_static()
 	fi
 		echo "	wpa-ssid $wifi" >> interfaces
 		echo "	wpa-psk $pass" >> interfaces
+		echo "  wireless-power off" >> interfaces
 
 	sudo mv interfaces /etc/network/
 }
@@ -857,6 +859,7 @@ function write_wep_dhcp()
 	echo "iface $wlan inet $mode" >> interfaces
 	echo "	wireless-essid $wifi" >> interfaces
 	echo "	wireless-key $pass" >> interfaces
+	echo "  wireless-power off" >> interfaces
 	
 	sudo mv interfaces /etc/network/
 }
@@ -876,6 +879,7 @@ function write_wpa2_dhcp()
 	echo "iface $wlan inet $mode" >> interfaces
 		echo "	wpa-ssid $wifi" >> interfaces
 		echo "	wpa-psk $pass" >> interfaces
+		echo "  wireless-power off" >> interfaces
 
 	sudo mv interfaces /etc/network/
 }
