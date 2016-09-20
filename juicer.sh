@@ -138,6 +138,8 @@ case $option in
     sudo apt-get update -y
     echo -e $YELLOW'--->Upgrading Operating System...'$BLACK
     sudo apt-get upgrade -y
+    sudo ./juicer.sh
+    exit 0
     ;;
   3 | 03)
     sudo ./check-network-settings.sh
