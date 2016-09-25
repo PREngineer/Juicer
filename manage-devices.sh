@@ -63,11 +63,13 @@ function options()
 	title
 
 	echo -e $YELLOW'@---@---@---@---@---@--- CHOOSE ---@---@---@---@---@---@'
-	echo -e $YELLOW'[01] '$BLACK"Show My Drives"
-	echo -e $YELLOW'[02] '$BLACK"Fix USB Drive Permissions 		[If you can't write]"
-	echo -e $YELLOW'[03] '$BLACK"Safely Remove/Eject USB Drive	[Don't just pull]"
-	echo -e $YELLOW'[04] '$BLACK''
-	echo -e $YELLOW'[05] '$BLACK''
+	echo -e $YELLOW'[01] '$BLACK"Install USB Auto Mounter"
+	echo -e $YELLOW'[02] '$BLACK"Uninstall USB Auto Mounter"
+	echo -e $YELLOW'[03] '$BLACK"Show My Drives"
+	echo -e $YELLOW'[04] '$BLACK"Fix USB Drive Permissions 		[If you can't write]"
+	echo -e $YELLOW'[05] '$BLACK"Safely Remove/Eject USB Drive	[Don't just pull]"
+	echo -e $YELLOW'[06] '$BLACK''
+	echo -e $YELLOW'[07] '$BLACK''
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
 	echo -e $YELLOW'[99] '$BLACK'Exit - Go back to Main Menu'
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
@@ -79,26 +81,35 @@ function options()
 	case $option in
 
 		1 | 01)
-	        show_drives
+	        sudo apt-get install -y usbmounter
 	        ;;
 
 	    2 | 02)
+	        sudo apt-get remove -y usbmounter
+	        sudo apt-get purge -y usbmounter
+	        ;;
+
+	    3 | 03)
+	        show_drives
+	        ;;
+
+	    4 | 04)
 	        fix_permissions
 	        ;;
 
-	  	3 | 03)
+	  	5 | 05)
 	        eject_drive
 	        ;;
 
-	  	4 | 04)
+	  	6 | 06)
 	        
 	        ;;
 
-	   	5 | 05)
+	   	7 | 07)
 	        
 	        ;;
 
-	    6 | 06)
+	    8 | 08)
 	        
 	        ;;
 
@@ -114,7 +125,7 @@ function options()
 	esac
 }
 
-###########################  ###########################
+########################### SHOW USB DRIVES ###########################
 function show_drives()
 {
 	df -h | grep '/dev/' > drives
@@ -152,7 +163,7 @@ function eject_drive()
 }
 
 ###########################  ###########################
-function ()
+function empty()
 {
 	
 }
