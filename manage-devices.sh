@@ -136,7 +136,7 @@ function show_drives()
 
 	echo -e $YELLOW'Drive\tSpace\tUsed\tAvailable\tMounted\tType'
 	echo -e '-----------------------------------------------'
-	for((i=0; i < ${#drives[@]}; i++));
+	for((i=0; i<${#drives[@]}; i++));
 	do
 		output=()
 		output+=(echo $temp[i] | awk '{print $1}')
