@@ -138,18 +138,14 @@ function show_drives()
 	echo -e '-----------------------------------------------'
 	for((i=0; i<${#drives[@]}; i++));
 	do
-		echo $temp[i] | awk '{print $1}'
-    echo "\t"
-		echo $temp[i] | awk '{print $2}'
-    echo "\t"
-		echo $temp[i] | awk '{print $3}'
-    echo "\t"
-		echo $temp[i] | awk '{print $4}'
-    echo "\t"
-		echo $temp[i] | awk '{print $5}'
-    echo "\t"
-		echo $temp[i] | awk '{print $6}'
-	    #echo -e "${output[1]}\t${output[2]\t${output[3]\t${output[4]\t${output[5]\t${output[6]}"
+		output=()
+		output+=(echo $temp[i] | awk '{print $1}')
+		output+=(echo $temp[i] | awk '{print $2}')
+		output+=(echo $temp[i] | awk '{print $3}')
+		output+=(echo $temp[i] | awk '{print $4}')
+		output+=(echo $temp[i] | awk '{print $5}')
+		output+=(echo $temp[i] | awk '{print $6}')
+	    echo -e "${output[1]}\t${output[2]}\t${output[3]}\t${output[4]}\t${output[5]}\t${output[6]}"
 	done
 	echo -e '-----------------------------------------------'
 }
