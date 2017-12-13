@@ -151,22 +151,13 @@ function show_drives()
 }
 
 ###########################  ###########################
-function fix_permissions()
-{
-
-}
+#function fix_permissions(){}
 
 ###########################  ###########################
-function eject_drive()
-{
-
-}
+#function eject_drive(){}
 
 ###########################  ###########################
-function empty()
-{
-
-}
+#function empty(){}
 
 ########################### Start Execution ###########################
 options
