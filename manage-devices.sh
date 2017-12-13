@@ -74,7 +74,7 @@ function options()
 	echo -e $YELLOW'[99] '$BLACK'Exit - Go back to Main Menu'
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
 	echo
-	echo -e 'Type your choice and press [ENTER]: '
+	echo -e $BLACK'Type your choice and press [ENTER]: '
 
 	read option
 
@@ -128,28 +128,9 @@ function options()
 ########################### SHOW USB DRIVES ###########################
 function show_drives()
 {
-	df -h | grep '/dev/' > drives
-
-	mapfile -t temp < drives
-
-	rm drives
-
 	echo -e $YELLOW'Drive\tSpace\tUsed\tAvailable\tMounted\tType'
 	echo -e '-----------------------------------------------'
-	for((i=0; i<${#drives[@]}; i++));
-	do
-		echo $temp[i] | awk '{print $1}'
-    echo "\t"
-		echo $temp[i] | awk '{print $2}'
-    echo "\t"
-		echo $temp[i] | awk '{print $3}'
-    echo "\t"
-		echo $temp[i] | awk '{print $4}'
-    echo "\t"
-		echo $temp[i] | awk '{print $5}'
-    echo "\t"
-		echo $temp[i] | awk '{print $6}'
-	done
+	df -h | grep '/dev/'
 	echo -e '-----------------------------------------------'
 }
 
