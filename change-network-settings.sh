@@ -27,7 +27,7 @@ function title()
 	clear
 
 	# Display the Title Information
-	echo 
+	echo
 	echo -e $RED
 	echo -e "╔══════════════════════════════════════════════╗"
 	echo -e "║      ██╗██╗   ██╗██╗ ██████╗███████╗██████╗  ║"
@@ -67,10 +67,10 @@ function options()
 	echo -e $YELLOW'@---@---@---@---@---@--- CHOOSE ---@---@---@---@---@---@'
 	echo -e $YELLOW'[01] '$BLACK'Add/Modify - Wireless Configuraton [Static]'
 	echo -e $YELLOW'[02] '$BLACK'Add/Modify - Wireless Configuration [DHCP]'
-	echo -e $RED'\t- This option will make Ethernet DHCP.'$YELLOW
+	echo -e $RED'\t- This option will make Ethernet DHCP.'
 	echo -e $YELLOW'[03] '$BLACK'Add/Modify - Ethernet Configuration[Static]'
 	echo -e $YELLOW'[04] '$BLACK'Add/Modify - Ethernet Configuration[DHCP]'
-	echo -e $RED'\t- This option will remove WiFi.'$YELLOW
+	echo -e $RED'\t- This option will remove WiFi.'
 	echo -e $YELLOW'[05] '$BLACK'Add/Modify - Primary DNS Configuration'
 	echo -e $YELLOW'[06] '$BLACK"Disable - WiFi Power Management [Never Off]"
 	echo -e $YELLOW'[07] '$BLACK"Enable - WiFi Power Management  [Turns Off]"
@@ -79,7 +79,7 @@ function options()
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
 	echo
 	echo -e 'Type your choice and press [ENTER]: '
-	
+
 	read option
 
 	case $option in
@@ -317,7 +317,7 @@ function add_lan_static()
 	echo
 	echo -e $BLACK"Enter the desired DNS Servers : "$CYAN
 	read dns
-	
+
 	write_lan_static
 
 	echo -e $YELLOW'--->Restarting Ethernet Network Adapter...'$BLACK
@@ -355,7 +355,7 @@ function add_lan_dhcp()
 	validate
 
 	mode='dhcp'
-	
+
 	write_lan_dhcp
 
 	echo -e $YELLOW'--->Restarting Ethernet Network Adapter...'$BLACK
@@ -368,9 +368,9 @@ function display_lan()
 {
 	title
 
-	echo 
+	echo
 	echo -e $YELLOW'--->Retrieving Available LAN Adapter Details...'$BLACK
-	echo 
+	echo
 
 	ifconfig -a | grep 'eth' | awk '{print $5}' > macs
 
@@ -388,7 +388,7 @@ function display_lan()
 	do
 	        echo -e "${names[i]} \t ${macs[i]}"
 	done
-	
+
 	echo -e "---------------------------------"
 	rm macs names
 }
@@ -402,9 +402,9 @@ function write_lan_static()
 	echo "" >> interfaces
 	echo "auto $eth" >> interfaces
 	echo "iface $eth inet $mode" >> interfaces
-	
+
 	if [ "$mode" == "static" ]
-	then 
+	then
 		echo "	address $address" >> interfaces
 		echo "	netmask $netmask" >> interfaces
 		echo "	gateway $gateway" >> interfaces
@@ -622,7 +622,7 @@ function add_wifi_static()
 	echo
 	echo -e $BLACK"Enter the desired DNS Servers : "$CYAN
 	read dns
-	
+
 	########################### Prompt for Wifi & Password ###########################
 	title
 	echo -e $RED" ---------------------"
@@ -634,9 +634,9 @@ function add_wifi_static()
 	echo
 	echo -e $BLACK"Enter the Wireless Network Password [Passphrase] : "$CYAN
 	read pass
-	
+
 	########################### Write To File ###########################
-	
+
 	title
 	go=$true
 	while [$go -eq $true];
@@ -713,9 +713,9 @@ function add_wifi_dhcp()
 	echo
 	echo -e $BLACK"Enter the Wireless Network Password [Passphrase] : "$CYAN
 	read pass
-	
+
 	########################### Write To File ###########################
-	
+
 	title
 	go=$true
 	while [$go -eq $true];
@@ -760,9 +760,9 @@ function validate()
 	mapfile -t wlans < wlan
 
 	rm eth wlan
-	
+
 	########################### Prompt for Clear of Config ###########################
-	title 
+	title
 	echo -e $BLACK"You have the following Interfaces/Adapters configured:"
 
 	echo -e "--------------"
@@ -797,7 +797,7 @@ function write_wep_static()
 	echo "iface $wlan inet $mode" >> interfaces
 
 	if [ "$mode" == "static" ]
-	then 
+	then
 		echo "	address $address" >> interfaces
 		echo "	netmask $netmask" >> interfaces
 		echo "	gateway $gateway" >> interfaces
@@ -805,11 +805,11 @@ function write_wep_static()
 		echo "	broadcast $broadcast" >> interfaces
 		echo "	network $network" >> interfaces
 	fi
-	
+
 	echo "	wireless-essid $wifi" >> interfaces
 	echo "	wireless-key $pass" >> interfaces
 	echo "  wireless-power off" >> interfaces
-	
+
 
 	sudo mv interfaces /etc/network/
 }
@@ -829,7 +829,7 @@ function write_wpa2_static()
 	echo "iface $wlan inet $mode" >> interfaces
 
 	if [ "$mode" == "static" ]
-	then 
+	then
 		echo "	address $address" >> interfaces
 		echo "	netmask $netmask" >> interfaces
 		echo "	gateway $gateway" >> interfaces
@@ -860,7 +860,7 @@ function write_wep_dhcp()
 	echo "	wireless-essid $wifi" >> interfaces
 	echo "	wireless-key $pass" >> interfaces
 	echo "  wireless-power off" >> interfaces
-	
+
 	sudo mv interfaces /etc/network/
 }
 
@@ -889,9 +889,9 @@ function display_wifi()
 {
 	title
 
-	echo 
+	echo
 	echo -e $YELLOW'--->Retrieving Available WiFi Adapter Details...'$BLACK
-	echo 
+	echo
 
 	cat /etc/udev/rules.d/70-persistent-net.rules | grep '{address}' > test
 
@@ -911,7 +911,7 @@ function display_wifi()
 	do
 	        echo -e "${names[i]} \t ${macs[i]}"
 	done
-	
+
 	echo -e "---------------------------------"
 	rm macs names test
 }
@@ -921,7 +921,7 @@ function change_dns()
 {
 	########################### Prompt for IP Address ###########################
 	title
-	
+
 	echo -e $BLACK"Enter the desired DNS Server : "$CYAN
 	read dns
 	echo "nameserver $dns" > resolv.conf
@@ -991,7 +991,7 @@ function disable_pwr_management()
 		echo
 		echo -e $RED"WiFi Power Management is already Disabled!"$BLACK
 		echo
-		
+
 		pause 'Press [Enter] to Continue...'
 		options
 	fi
@@ -1005,7 +1005,7 @@ function enable_pwr_management()
 	echo
 
 	if [ -e "/etc/pm/power.d/wifi_pwr_off" ]
-	then		
+	then
 		rm /etc/pm/power.d/wifi_pwr_off
 
 		echo
@@ -1031,7 +1031,7 @@ options
 
 ########################### Restarting Network Services ###########################
 
-echo 
+echo
 echo -e $YELLOW'--->Restarting Network Services...'$BLACK
 sudo /etc/init.d/networking restart
 echo

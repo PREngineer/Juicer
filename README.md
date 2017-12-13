@@ -3,7 +3,7 @@ A tool to manage Orange Pis
 
 ## juicer.sh
 
-Main User Interface.  Provides a list of options to the user to manage their Orange Pi.
+Main User Interface.  Provides a list of options to the user to manage their Orange Pi (Ubuntu Server).
 
 ## check-network-settings.sh
 

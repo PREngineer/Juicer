@@ -1,5 +1,5 @@
 #!/bin/bash
-# Script Name: 
+# Script Name:
 # Author: PREngineer (Jorge Pabon) - pianistapr@hotmail.com
 # Publisher: Jorge Pabon
 # License: Personal Use (1 device)
@@ -25,7 +25,7 @@ function title()
 	clear
 
 	# Display the Title Information
-	echo 
+	echo
 	echo -e $RED
 	echo -e "╔══════════════════════════════════════════════╗"
 	echo -e "║      ██╗██╗   ██╗██╗ ██████╗███████╗██████╗  ║"
@@ -75,7 +75,7 @@ function options()
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
 	echo
 	echo -e 'Type your choice and press [ENTER]: '
-	
+
 	read option
 
 	case $option in
@@ -102,15 +102,15 @@ function options()
 	        ;;
 
 	  	6 | 06)
-	        
+
 	        ;;
 
 	   	7 | 07)
-	        
+
 	        ;;
 
 	    8 | 08)
-	        
+
 	        ;;
 
 	    99 | 99)
@@ -138,14 +138,18 @@ function show_drives()
 	echo -e '-----------------------------------------------'
 	for((i=0; i<${#drives[@]}; i++));
 	do
-		output=()
-		output+=(echo $temp[i] | awk '{print $1}')
-		output+=(echo $temp[i] | awk '{print $2}')
-		output+=(echo $temp[i] | awk '{print $3}')
-		output+=(echo $temp[i] | awk '{print $4}')
-		output+=(echo $temp[i] | awk '{print $5}')
-		output+=(echo $temp[i] | awk '{print $6}')
-	    echo -e "${output[1]}\t${output[2]\t${output[3]\t${output[4]\t${output[5]\t${output[6]}"
+		echo $temp[i] | awk '{print $1}'
+    echo "\t"
+		echo $temp[i] | awk '{print $2}'
+    echo "\t"
+		echo $temp[i] | awk '{print $3}'
+    echo "\t"
+		echo $temp[i] | awk '{print $4}'
+    echo "\t"
+		echo $temp[i] | awk '{print $5}'
+    echo "\t"
+		echo $temp[i] | awk '{print $6}'
+	    #echo -e "${output[1]}\t${output[2]\t${output[3]\t${output[4]\t${output[5]\t${output[6]}"
 	done
 	echo -e '-----------------------------------------------'
 }
@@ -153,19 +157,19 @@ function show_drives()
 ###########################  ###########################
 function fix_permissions()
 {
-	
+
 }
 
 ###########################  ###########################
 function eject_drive()
 {
-	
+
 }
 
 ###########################  ###########################
 function empty()
 {
-	
+
 }
 
 ########################### Start Execution ###########################

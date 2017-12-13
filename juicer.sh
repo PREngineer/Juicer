@@ -23,7 +23,7 @@ function pause()
 }
 
 if [ "$EUID" -ne 0 ]
-  then 
+  then
   echo
   echo -e $RED'Please run as root using the command: '$BLACK'sudo ./juicer.sh'
   echo
@@ -34,7 +34,7 @@ fi
 clear
 
 # Display the Title Information
-echo 
+echo
 echo -e $RED
 echo -e "╔══════════════════════════════════════════════╗"
 echo -e "║      ██╗██╗   ██╗██╗ ██████╗███████╗██████╗  ║"
@@ -47,7 +47,7 @@ echo -e "╚══════════════════════�
 echo -e $CYAN"          Brought to you by PREngineer"
 echo
 echo -e $GREEN'Main Menu'$BLACK
-echo 
+echo
 echo -e "╔═════════════════════════════════════════════════════════════════════════════════════════════════════════╗"
 echo -e '║'$RED' 1. This tool has been tested on Ubuntu (Server & Desktop).'$BLACK'                                              ║'
 echo -e '║'$RED' 2. The author(s) cannot be held accountable for any problems that might occur if you run this tool.'$BLACK'     ║'
@@ -57,8 +57,9 @@ echo -e '║'$RED'        CONTINUE TO AGREE.  OTHERWISE PRESS    [ C T R L   +  
 echo -e '╚═════════════════════════════════════════════════════════════════════════════════════════════════════════╝'
 echo
 echo -e '-----------------------------------------------------------------------------------------------------------'
-echo -e $BLACK'AVAILABLE\t'$CYAN'NOT AVAILABLE YET'
+echo -e $BLACK'AVAILABLE\t'$CYAN'NOT AVAILABLE YET'$BLACK
 echo -e '-----------------------------------------------------------------------------------------------------------'
+echo -e
 echo -e $YELLOW'@---@---@---@---@---@--- UPDATE ---@---@---@---@---@---@'
 echo -e $YELLOW'[00] '$BLACK'Update Juicer for Orange Pis'
 echo -e $YELLOW'[01] '$BLACK'Uninstall Juicer for Orange Pis'

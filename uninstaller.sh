@@ -21,7 +21,7 @@ SCRIPTPATH=$(pwd)
 
 # Display the Title Information
 clear
-echo 
+echo
 echo -e $RED
 echo -e "╔══════════════════════════════════════════════╗"
 echo -e "║      ██╗██╗   ██╗██╗ ██████╗███████╗██████╗  ║"
@@ -33,10 +33,10 @@ echo -e "║  ╚════╝  ╚═════╝ ╚═╝ ╚═══�
 echo -e "╚══════════════════════════════════════════════╝ for Orange Pis"
 echo -e $CYAN"          Brought to you by PREngineer"
 echo
-echo -e $GREEN'Uninstaller'$BLACK
+echo -e $GREEN'Uninstaller'
 
 echo
-echo -e $RED"Are you sure that you want to uninstall Juicer for Orange Pis?"$YELLOW
+echo -e $RED"Are you sure that you want to uninstall Juicer for Orange Pis?"
 echo -e $YELLOW"Press 'y' to uninstall or 'n' to go back to the Main Menu : "$CYAN
 read option
 echo
