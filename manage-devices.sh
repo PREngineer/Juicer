@@ -82,11 +82,13 @@ function options()
 
 		1 | 01)
 	        sudo apt-get install -y usbmount
+          options
 	        ;;
 
 	    2 | 02)
 	        sudo apt-get remove -y usbmount
 	        sudo apt-get purge -y usbmount
+          options
 	        ;;
 
 	    3 | 03)
