@@ -128,6 +128,8 @@ function options()
 ########################### SHOW USB DRIVES ###########################
 function show_drives()
 {
+  title
+
   echo -e
   echo -e $GREEN'mmcblk = Micro SD'$CYAN' | Other = USB'
   echo -e
@@ -135,6 +137,11 @@ function show_drives()
 	echo -e '-----------------------------------------------'
 	df -h | grep '/dev/'
 	echo -e '-----------------------------------------------'
+
+  echo
+	pause 'Press [Enter] to go back to the Manage Devices Menu'
+	options
+	echo
 }
 
 ###########################  ###########################
