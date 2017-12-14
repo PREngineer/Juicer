@@ -81,14 +81,22 @@ function options()
 	case $option in
 
 		1 | 01)
-	        sudo apt-get install -y usbmount
-          options
+          echo
+          sudo apt-get install -y usbmount
+          echo
+        	pause 'Press [Enter] to go back to the Manage Devices Menu'
+        	options
+        	echo
 	        ;;
 
 	    2 | 02)
+          echo
 	        sudo apt-get remove -y usbmount
 	        sudo apt-get purge -y usbmount
-          options
+          echo
+        	pause 'Press [Enter] to go back to the Manage Devices Menu'
+        	options
+        	echo
 	        ;;
 
 	    3 | 03)
