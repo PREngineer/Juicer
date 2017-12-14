@@ -131,7 +131,7 @@ function show_drives()
   echo -e
   echo -e $GREEN'mmcblk = Micro SD'$CYAN' | Other = USB'
   echo -e
-  echo -e $BLACK'Drive\t\tSpace\tUsed\tAvailable\tMounted\tType'
+  echo -e $BLACK'Drive\t\tSpace\tUsed\tAvail\t%Used\tMounted'
 	echo -e '-----------------------------------------------'
 	df -h | grep '/dev/'
 	echo -e '-----------------------------------------------'
