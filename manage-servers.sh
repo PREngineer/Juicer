@@ -62,7 +62,12 @@ function options()
 {
 	title
 
-	echo -e $YELLOW'@---@---@---@---@---@--- CHOOSE ---@---@---@---@---@---@'
+  echo
+  echo -e '-----------------------------------------------------------------------------------------------------------'
+  echo -e $BLACK'AVAILABLE\t'$CYAN'NOT AVAILABLE YET'$BLACK
+  echo -e '-----------------------------------------------------------------------------------------------------------'
+  echo -e
+  echo -e $YELLOW'@---@---@---@---@---@--- CHOOSE ---@---@---@---@---@---@'
   echo -e $YELLOW'[] '$CYAN'Web Server 		[Host your own webpages]'
   echo -e $YELLOW'[] '$CYAN'Database Server 	[Host your own databases]'
   echo -e $YELLOW'[] '$CYAN'Mail Server 		[Host your own mail]'

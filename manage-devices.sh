@@ -62,12 +62,17 @@ function options()
 {
 	title
 
+  echo
+  echo -e '-----------------------------------------------------------------------------------------------------------'
+  echo -e $BLACK'AVAILABLE\t'$CYAN'NOT AVAILABLE YET'$BLACK
+  echo -e '-----------------------------------------------------------------------------------------------------------'
+  echo -e
 	echo -e $YELLOW'@---@---@---@---@---@--- CHOOSE ---@---@---@---@---@---@'
 	echo -e $YELLOW'[01] '$BLACK"Install USB Auto Mounter"
 	echo -e $YELLOW'[02] '$BLACK"Uninstall USB Auto Mounter"
 	echo -e $YELLOW'[03] '$BLACK"Show My Drives"
-	echo -e $YELLOW'[04] '$BLACK"Fix USB Drive Permissions 		[If you can't write]"
-	echo -e $YELLOW'[05] '$BLACK"Safely Remove/Eject USB Drive	[Don't just pull]"
+	echo -e $YELLOW'[04] '$CYAN"Fix USB Drive Permissions 		[If you can't write]"
+	echo -e $YELLOW'[05] '$CYAN"Safely Remove/Eject USB Drive	[Don't just pull]"
 	echo -e $YELLOW'[06] '$BLACK''
 	echo -e $YELLOW'[07] '$BLACK''
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
@@ -155,22 +160,13 @@ function show_drives()
 }
 
 ###########################  ###########################
-function fix_permissions()
-{
-
-}
+#function fix_permissions(){}
 
 ###########################  ###########################
-function eject_drive()
-{
-
-}
+#function eject_drive(){}
 
 ###########################  ###########################
-function empty()
-{
-
-}
+#function empty(){}
 
 ########################### Start Execution ###########################
 options

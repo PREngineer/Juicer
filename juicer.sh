@@ -70,7 +70,7 @@ echo -e $YELLOW'[03] '$BLACK'Check Network Settings'
 echo -e $YELLOW'[04] '$BLACK'Change Network Settings'
 echo
 echo -e $YELLOW'@---@---@---@---@---@--- DEVICES & PARTITIONS ---@---@---@---@---@---@'
-echo -e $YELLOW'[05] '$CYAN'Manage Devices'
+echo -e $YELLOW'[05] '$BLACK'Manage Devices'
 echo -e $YELLOW'[06] '$CYAN'Manage Partitions'
 echo
 echo -e $YELLOW'@---@---@---@---@---@--- NETWORK STORAGE---@---@---@---@---@---@'
@@ -99,7 +99,7 @@ echo -e $YELLOW'@---@---@---@---@---@--- GAMES ---@---@---@---@---@---@'
 echo -e $YELLOW'[] '$CYAN'Minecraft Server	[Host your own Minecraft]'
 echo
 echo -e $YELLOW'@---@---@---@---@---@--- QUIT ---@---@---@---@---@---@'
-echo -e $YELLOW'[98] '$CYAN'Restart Orange Pi [Sometimes necessary after changes]'
+echo -e $YELLOW'[98] '$BLACK'Restart Orange Pi  [Sometimes necessary after changes]'
 echo -e $YELLOW'[99] '$BLACK'Quit'
 
 echo
