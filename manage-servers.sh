@@ -1,5 +1,5 @@
 #!/bin/bash
-# Script Name: manage-devices.sh
+# Script Name: manage-servers.sh
 # Author: PREngineer (Jorge Pabon) - pianistapr@hotmail.com
 # Publisher: Jorge Pabon
 # License: Personal Use (1 device)
@@ -37,7 +37,7 @@ function title()
 	echo -e "╚══════════════════════════════════════════════╝ for Orange Pis"
 	echo -e $CYAN"          Brought to you by PREngineer"
 	echo
-	echo -e $GREEN'Manage Devices'$BLACK
+	echo -e $GREEN'Servers/Services'$BLACK
 	echo
 
 	agree
@@ -63,13 +63,16 @@ function options()
 	title
 
 	echo -e $YELLOW'@---@---@---@---@---@--- CHOOSE ---@---@---@---@---@---@'
-	echo -e $YELLOW'[01] '$BLACK"Install USB Auto Mounter"
-	echo -e $YELLOW'[02] '$BLACK"Uninstall USB Auto Mounter"
-	echo -e $YELLOW'[03] '$BLACK"Show My Drives"
-	echo -e $YELLOW'[04] '$BLACK"Fix USB Drive Permissions 		[If you can't write]"
-	echo -e $YELLOW'[05] '$BLACK"Safely Remove/Eject USB Drive	[Don't just pull]"
-	echo -e $YELLOW'[06] '$BLACK''
-	echo -e $YELLOW'[07] '$BLACK''
+  echo -e $YELLOW'[] '$CYAN'Web Server 		[Host your own webpages]'
+  echo -e $YELLOW'[] '$CYAN'Database Server 	[Host your own databases]'
+  echo -e $YELLOW'[] '$CYAN'Mail Server 		[Host your own mail]'
+  echo -e $YELLOW'[] '$CYAN'Printer Server 	[Manage your printers]'
+  echo -e $YELLOW'[] '$CYAN'Cloud Server 	[Host your own Dropbox]'
+  echo -e $YELLOW'[] '$CYAN'Git Server 		[Host your own GitHub]'
+  echo -e $YELLOW'[] '$CYAN'VPN Server 		[Host your own VPN]'
+  echo -e $YELLOW'[] '$CYAN'FTP Server 		[Host your own file server]'
+  echo -e $YELLOW'[] '$CYAN'Plex Media Server	[Stream videos to devices]'
+  echo -e $YELLOW'[] '$CYAN'Jenkins CI Server	[Your own Continuous Integration]'
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
 	echo -e $YELLOW'[99] '$BLACK'Exit - Go back to Main Menu'
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
@@ -82,7 +85,7 @@ function options()
 
 		1 | 01)
           echo
-          sudo apt-get install -y usbmount
+
           echo
         	pause 'Press [Enter] to go back to the Manage Devices Menu'
         	options
@@ -91,8 +94,7 @@ function options()
 
 	    2 | 02)
           echo
-	        sudo apt-get remove -y usbmount
-	        sudo apt-get purge -y usbmount
+
           echo
         	pause 'Press [Enter] to go back to the Manage Devices Menu'
         	options
@@ -100,15 +102,15 @@ function options()
 	        ;;
 
 	    3 | 03)
-	        show_drives
+
 	        ;;
 
 	    4 | 04)
-	        fix_permissions
+
 	        ;;
 
 	  	5 | 05)
-	        eject_drive
+
 	        ;;
 
 	  	6 | 06)
@@ -133,37 +135,6 @@ function options()
 	       	echo -e $RED'Invalid Option!  Try again...'$BLACK
 			options
 	esac
-}
-
-########################### SHOW USB DRIVES ###########################
-function show_drives()
-{
-  title
-
-  echo -e
-  echo -e $GREEN'mmcblk = Micro SD'$CYAN' | Other = USB'
-  echo -e
-  echo -e $BLACK'Drive\t\tSpace Used  Avail %Use Mount Point'
-	echo -e '-----------------------------------------------'
-	df -h | grep '/dev/'
-	echo -e '-----------------------------------------------'
-
-  echo
-	pause 'Press [Enter] to go back to the Manage Devices Menu'
-	options
-	echo
-}
-
-###########################  ###########################
-function fix_permissions()
-{
-
-}
-
-###########################  ###########################
-function eject_drive()
-{
-
 }
 
 ###########################  ###########################

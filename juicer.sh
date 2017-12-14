@@ -78,16 +78,7 @@ echo -e $YELLOW'[07] '$CYAN'Manage File Shares'
 echo -e $YELLOW'[08] '$CYAN'Manage Mount Points'
 echo
 echo -e $YELLOW'@---@---@---@---@---@--- SERVERS/SERVICES ---@---@---@---@---@---@'
-echo -e $YELLOW'[] '$CYAN'Web Server 		[Host your own webpages]'
-echo -e $YELLOW'[] '$CYAN'Database Server 	[Host your own databases]'
-echo -e $YELLOW'[] '$CYAN'Mail Server 		[Host your own mail]'
-echo -e $YELLOW'[] '$CYAN'Printer Server 	[Manage your printers]'
-echo -e $YELLOW'[] '$CYAN'Cloud Server 		[Host your own Dropbox]'
-echo -e $YELLOW'[] '$CYAN'Git Server 		[Host your own GitHub]'
-echo -e $YELLOW'[] '$CYAN'VPN Server 		[Host your own VPN]'
-echo -e $YELLOW'[] '$CYAN'FTP Server 		[Host your own file server]'
-echo -e $YELLOW'[] '$CYAN'Plex Media Server	[Stream Videos to devices]'
-echo -e $YELLOW'[] '$CYAN'Jenkins CI Server	[Your own Continuous Integration]'
+echo -e $YELLOW'[09] '$BLACK'Manage Servers'
 echo
 echo -e $YELLOW'@---@---@---@---@---@--- P2P/SHARING ---@---@---@---@---@---@'
 echo -e $YELLOW'[] '$CYAN'Usenet Indexer		[Host your own OzNZB]'
@@ -153,6 +144,10 @@ case $option in
   5 | 05)
     sudo ./manage-devices.sh
     ;;
+
+  9 | 09)
+      sudo ./manage-servers.sh
+      ;;
 
   98)
     sudo reboot now
