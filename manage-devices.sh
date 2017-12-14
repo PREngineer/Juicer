@@ -81,12 +81,12 @@ function options()
 	case $option in
 
 		1 | 01)
-	        sudo apt-get install -y usbmounter
+	        sudo apt-get install -y usbmount
 	        ;;
 
 	    2 | 02)
-	        sudo apt-get remove -y usbmounter
-	        sudo apt-get purge -y usbmounter
+	        sudo apt-get remove -y usbmount
+	        sudo apt-get purge -y usbmount
 	        ;;
 
 	    3 | 03)
