@@ -92,8 +92,8 @@ echo -e $YELLOW'[] '$CYAN'Kodi Media Player	[]'
 echo -e $YELLOW'[] '$CYAN' Server 		[]'
 echo
 echo -e $YELLOW'@---@---@---@---@---@--- SOFTWARE ---@---@---@---@---@---@'
-echo -e $YELLOW'[] '$CYAN'Wordpress	 		[Content Management System for Web]'
-echo -e $YELLOW'[] '$CYAN'Joomla 			[Content Management System for Web]'
+echo -e $YELLOW'[] '$CYAN'Wordpress	 	[Content Management System for Web]'
+echo -e $YELLOW'[] '$CYAN'Joomla 		[Content Management System for Web]'
 echo
 echo -e $YELLOW'@---@---@---@---@---@--- GAMES ---@---@---@---@---@---@'
 echo -e $YELLOW'[] '$CYAN'Minecraft Server	[Host your own Minecraft]'
