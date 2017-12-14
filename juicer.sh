@@ -81,7 +81,7 @@ echo -e $YELLOW'@---@---@---@---@---@--- SERVERS/SERVICES ---@---@---@---@---@--
 echo -e $YELLOW'[09] '$BLACK'Manage Servers'
 echo
 echo -e $YELLOW'@---@---@---@---@---@--- P2P/SHARING ---@---@---@---@---@---@'
-echo -e $YELLOW'[] '$CYAN'Usenet Indexer		[Host your own OzNZB]'
+echo -e $YELLOW'[] '$CYAN'Usenet Indexer	[Host your own OzNZB]'
 echo -e $YELLOW'[] '$CYAN'Torrent Indexer	[Host your own Kickass]'
 echo
 echo -e $YELLOW'@---@---@---@---@---@--- Automation ---@---@---@---@---@---@'
@@ -133,6 +133,7 @@ case $option in
     sudo ./juicer.sh
     exit 0
     ;;
+
   3 | 03)
     sudo ./check-network-settings.sh
     ;;
@@ -146,8 +147,8 @@ case $option in
     ;;
 
   9 | 09)
-      sudo ./manage-servers.sh
-      ;;
+    sudo ./manage-servers.sh
+    ;;
 
   98)
     sudo reboot now
@@ -158,7 +159,7 @@ case $option in
     ;;
 
   *)
-       	echo -e $RED'Invalid Option'$BLACK
+    echo -e $RED'Invalid Option'$BLACK
 		ScriptLoc=$(readlink -f "$0")
 		sleep 1
 		exec $ScriptLoc
