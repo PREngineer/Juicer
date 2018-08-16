@@ -60,7 +60,7 @@ echo -e '║'$RED'        CONTINUE TO AGREE.  OTHERWISE PRESS    [ C T R L   +  
 echo -e '╚═════════════════════════════════════════════════════════════════════════════════════════════════════════╝'
 echo
 echo -e '-----------------------------------------------------------------------------------------------------------'
-echo -e $BLACK'AVAILABLE\t'$CYAN'NOT AVAILABLE YET'$BLACK                              Pi IP Address: $LocalIP
+echo -e $BLACK'AVAILABLE\t'$CYAN'NOT AVAILABLE YET'$BLACK'\t\t\t\t\t\t'Pi IP Address: $LocalIP
 echo -e '-----------------------------------------------------------------------------------------------------------'
 echo -e
 echo -e $YELLOW'@---@---@---@---@---@--- UPDATE ---@---@---@---@---@---@'
