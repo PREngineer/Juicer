@@ -33,6 +33,9 @@ fi
 # Make sure to clear the Terminal
 clear
 
+# Get the internal IP Address
+LocalIP=$(hostname -I)
+
 # Display the Title Information
 echo
 echo -e $RED
@@ -57,7 +60,7 @@ echo -e '║'$RED'        CONTINUE TO AGREE.  OTHERWISE PRESS    [ C T R L   +  
 echo -e '╚═════════════════════════════════════════════════════════════════════════════════════════════════════════╝'
 echo
 echo -e '-----------------------------------------------------------------------------------------------------------'
-echo -e $BLACK'AVAILABLE\t'$CYAN'NOT AVAILABLE YET'$BLACK
+echo -e $BLACK'AVAILABLE\t'$CYAN'NOT AVAILABLE YET'$BLACK                              Pi IP Address: $LocalIP
 echo -e '-----------------------------------------------------------------------------------------------------------'
 echo -e
 echo -e $YELLOW'@---@---@---@---@---@--- UPDATE ---@---@---@---@---@---@'
