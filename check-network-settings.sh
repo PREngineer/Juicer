@@ -201,7 +201,7 @@ function display_wifi()
 	title
 
 	echo 
-	echo -e $YELLOW'--->Retrieving Available LAN Adapter Details...'$BLACK
+	echo -e $YELLOW'--->Retrieving Available WiFi Adapter Details...'$BLACK
 	echo 
 
 	ifconfig -a | grep 'wlan' | awk '{print $5}' > macs
@@ -297,7 +297,7 @@ function speed_test()
     	echo 
     	echo "Installing Speedtest-CLI"
     	echo
-    	sudo apt-get install python-pip python-dev build-essential
+    	sudo apt-get install -y python-pip python-dev build-essential
 		sudo pip install --upgrade pip
 		sudo pip install --upgrade virtualenv
 		sudo pip install git+https://github.com/sivel/speedtest-cli
