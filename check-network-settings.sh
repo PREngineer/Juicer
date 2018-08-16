@@ -65,11 +65,16 @@ function options()
 	echo -e $YELLOW'@---@---@---@---@---@--- CHOOSE ---@---@---@---@---@---@'
 	echo -e $YELLOW'[01] '$BLACK'View - Running Details'
 	echo -e $YELLOW'[02] '$BLACK'View - Configuration File Details'
-	echo -e $YELLOW'[03] '$BLACK'View - Registered WiFi Adapter Details'
-	echo -e $YELLOW'[04] '$BLACK'View - Registered Ethernet Adapter Details'
-	echo -e $YELLOW'[05] '$BLACK'View - Primary DNS'
+	echo -e $YELLOW'[03] '$BLACK'View - Primary DNS'
+	echo
+	echo -e $YELLOW'@---@---@---@---@---@-- ADAPTERS --@---@---@---@---@---@'
+	echo -e $YELLOW'[04] '$BLACK'View - Available WiFi Adapter(s)'
+	echo -e $YELLOW'[05] '$BLACK'View - Available Ethernet Adapter(s)'
+	echo -e $YELLOW'[06] '$BLACK'View - Registered WiFi Adapter(s)'
+	echo
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
-	echo -e $YELLOW'[06] '$BLACK'Test - Internet Speed (Speedtest)'
+	echo -e $YELLOW'[07] '$BLACK'Test - Internet Speed (Speedtest)'
+	echo
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
 	echo -e $YELLOW'[99] '$BLACK'Exit - Go back to Main Menu'
 	echo -e $YELLOW'@---@---@---@---@---@--------------@---@---@---@---@---@'
@@ -89,18 +94,22 @@ function options()
 	        ;;
 
 	  	3 | 03)
-	        display_wifi
-	        ;;
-
-	  	4 | 04)
-	        display_lan
-	        ;;
-
-	   	5 | 05)
 	        display_dns
 	        ;;
 
+	  	4 | 04)
+	        display_wifi
+	        ;;
+
+	   	5 | 05)
+	        display_lan
+	        ;;
+
 	    6 | 06)
+	        display_registered_wifi
+	        ;;
+
+	    7 | 07)
 	        speed_test
 	        ;;
 
@@ -186,8 +195,43 @@ function display_lan()
 	echo
 }
 
-########################### Show WiFi Adapters ###########################
+########################### Show Ethernet Adapters ###########################
 function display_wifi()
+{
+	title
+
+	echo 
+	echo -e $YELLOW'--->Retrieving Available LAN Adapter Details...'$BLACK
+	echo 
+
+	ifconfig -a | grep 'wlan' | awk '{print $5}' > macs
+
+	ifconfig -a | grep 'wlan' | awk '{print $1}' > names
+
+	mapfile -t macs < macs
+
+	mapfile -t names < names
+
+	echo -e "---------------------------------"
+	echo -e "Name \t MAC"
+	echo -e "---------------------------------"
+
+	for((i=0; i < ${#names[@]}; i++));
+	do
+	        echo -e "${names[i]} \t ${macs[i]}"
+	done
+	
+	echo -e "---------------------------------"
+	rm macs names
+
+	echo
+	pause 'Press [Enter] to go back to the Check Network Menu'
+	options
+	echo
+}
+
+########################### Show WiFi Adapters ###########################
+function display_registered_wifi()
 {
 	title
 
@@ -245,6 +289,20 @@ function display_dns()
 ########################### Run Speed Test ###########################
 function speed_test()
 {
+	title
+	echo -e "---------------------------------------"
+	echo -e "     MAKING SURE SPEEDTEST IS READY    "
+	echo -e "---------------------------------------"
+	if [ ! -e /usr/local/bin/speedtest-cli ]; then
+    	echo 
+    	echo "Installing Speedtest-CLI"
+    	echo
+    	sudo apt-get install python-pip python-dev build-essential
+		sudo pip install --upgrade pip
+		sudo pip install --upgrade virtualenv
+		sudo pip install git+https://github.com/sivel/speedtest-cli
+	fi 
+
 	title
 	echo -e "---------------------------------"
 	echo -e "     TESTING CONNECTION SPEED    "
